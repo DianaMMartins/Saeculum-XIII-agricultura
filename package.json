@@ -1,0 +1,21 @@
+{
+  "name": "newgame",
+  "version": "1.0.0",
+  "description": "13thCenturyFarminLife",
+  "main": "index.js",
+  "scripts": {
+   "start": "webpack serve --open",
+    "build": "npx webpack --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DianaMMartins/newGame.git"
+  },
+  "author": "Diana Martins",
+  "license": "ISC",
+   "devDependencies": {
+    "webpack": "^5.50.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^4.1.0"
+  }
+}
