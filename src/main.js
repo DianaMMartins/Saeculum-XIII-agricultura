@@ -53,11 +53,13 @@ function createH2oBtn() {
   h2oBtn.innerText = watering;
   page.appendChild(h2oBtn);
   h2oBtn.addEventListener("click", () => {
+    console.log("water true");
     player.wateringCan = true;
   });
 }
 
 function askForWater(needsWater) {
+  console.log("needs water f");
   const waterDiv = document.createElement("div");
   waterDiv.setAttribute("id", "req-h2o");
   waterDiv.innerText = h20;
@@ -65,68 +67,49 @@ function askForWater(needsWater) {
 }
 
 function wateringAct(needsWater) {
+  console.log("watering");
   if (player.wateringCan) {
     const toRemove = document.getElementById("req-h2o");
     toRemove.remove();
     needsWater.classList.remove("no-water");
     needsWater.classList.add("watered");
-  } else {
-    const message = "Collect water";
-    console.log(message);
+    //   } else {
+    //     const message = "Collect water";
+    //     console.log(message);
   }
 }
 
-// //addEventListener('click', 'allowBlockChange, 3000)
-
-// function allowBlockChange() {
-//   if (timerSoilChange === 3) {
-//     timerSoilChange = 0;
-//   } else {
-//     timerSoilChange++;
-//   }
-// }
-
-//starts timer and fills timer div
-// const changeSprite = document.setTimeout(() => {
-//   let square = e.explicitOriginalTarget;
-//   let changeSquare = square.innerText;
-
-//   if (changeSquare.length < 3) {
-//     if (changeSquare === "") {
-//       square.innerText = "🫘";
-//     } else if (changeSquare === "🫘") {
-//       square.innerText = "🌱";
-//     } else if (changeSquare === "🌱") {
-//       square.innerText = "🌾";
-//     } else if (changeSquare === "🌾") {
-//       square.innerText = "";
-//     }
-//   }
-// }, 3000);
+function startPlantGrowth(growing, evolved, classesArray) {
+  // console.log(growing.innerText, evolved, 'hi');
+  growing.innerText = evolved;
+  growing.classList.add(...classesArray);
+  askForWater(growing);
+}
 
 //could be keydown
+//click -> check what it is -> if needs water, ask, -> if watered  make grow
 mainDiv.addEventListener("click", (e) => {
-  let clickedElement = e.explicitOriginalTarget;
-  let checkText = clickedElement.textContent;
+  const clickedElement = e.explicitOriginalTarget;
+  const checkText = clickedElement.textContent;
+  const checkValueOfObject = Object.values(clickedElement.classList);
 
   //refactor for a switch ?!
-  if (clickedElement.className === "h20-btn") {
-    player.wateringCan = true;
-  }
-
   if (checkText.includes(empty)) {
+    //refactor into separate function
     clickedElement.innerText = seed;
-    const classes = ["seed", "no-water"];
-    clickedElement.classList.add(...classes);
+    const classesToAdd = ["seed", "no-water"];
+    clickedElement.classList.add(...classesToAdd);
     askForWater(clickedElement);
-
-    console.log("empty");
+    return;
   } else if (checkText.includes(seed)) {
-    wateringAct(clickedElement);
-    console.log("seed");
-    // wait for water
-    // create timer and water div
-    // if water is filled, call changeSprite timer
+    if (checkValueOfObject.includes("no-water") && player.wateringCan) {
+      console.log(clickedElement.classList);
+      wateringAct(clickedElement);
+      setTimeout(startPlantGrowth, 5000, clickedElement, seedling, ["seedling", "no-water"]);
+      return;
+    } else if (checkValueOfObject.includes("no-water") && !player.wateringCan) {
+      console.log("need water to grow");
+    }
   } else if (checkText.includes(seedling)) {
     console.log("seedling");
     // wait for water
@@ -136,7 +119,6 @@ mainDiv.addEventListener("click", (e) => {
     console.log("end");
     // call changeSprite timer
   }
-  console.log("none", clickedElement, seed, checkText === seed);
 });
 
 function startGame() {
