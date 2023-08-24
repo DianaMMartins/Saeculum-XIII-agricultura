@@ -39,6 +39,7 @@ function createSoilBoard(x, y) {
     for (let j = 0; j < x; j++) {
       const newTD = document.createElement("td");
       newTD.classList.add("soil");
+      newTD.setAttribute('id', j);
       newTD.innerText = empty;
       newTR.appendChild(newTD);
     }
@@ -53,24 +54,22 @@ function createH2oBtn() {
   h2oBtn.innerText = watering;
   page.appendChild(h2oBtn);
   h2oBtn.addEventListener("click", () => {
-    console.log("water true");
     player.wateringCan = true;
   });
 }
 
 function askForWater(needsWater) {
-  console.log("needs water f");
   const waterDiv = document.createElement("div");
-  waterDiv.setAttribute("id", "req-h2o");
+  waterDiv.classList.add("req-h2o");
   waterDiv.innerText = h20;
   needsWater.appendChild(waterDiv);
 }
 
 function wateringAct(needsWater) {
-  console.log("watering");
   if (player.wateringCan) {
-    const toRemove = document.getElementById("req-h2o");
-    toRemove.remove();
+    const toRemove = Object.values(document.getElementsByClassName('req-h2o')).filter(e => e.parentNode === needsWater)[0];
+    needsWater.removeChild(toRemove);
+
     needsWater.classList.remove("no-water");
     needsWater.classList.add("watered");
     //   } else {
@@ -88,6 +87,8 @@ function startPlantGrowth(growing, evolved, classesArray) {
 
 //could be keydown
 //click -> check what it is -> if needs water, ask, -> if watered  make grow
+
+//issue is water is key to order of starting then removes in order, not clicked one
 mainDiv.addEventListener("click", (e) => {
   const clickedElement = e.explicitOriginalTarget;
   const checkText = clickedElement.textContent;
@@ -103,9 +104,11 @@ mainDiv.addEventListener("click", (e) => {
     return;
   } else if (checkText.includes(seed)) {
     if (checkValueOfObject.includes("no-water") && player.wateringCan) {
-      console.log(clickedElement.classList);
       wateringAct(clickedElement);
-      setTimeout(startPlantGrowth, 5000, clickedElement, seedling, ["seedling", "no-water"]);
+      setTimeout(startPlantGrowth, 5000, clickedElement, seedling, [
+        "seedling",
+        "no-water",
+      ]);
       return;
     } else if (checkValueOfObject.includes("no-water") && !player.wateringCan) {
       console.log("need water to grow");
