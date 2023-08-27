@@ -7,10 +7,9 @@
 
 import { createEl } from "../acts";
 
-export function askForX(needyTxt, classNeeds, idNeeds, parent) {
+export function askForX(needyTxt, classNeeds, parent) {
   const newDiv = document.createElement("div");
-  newDiv.classList.add(classNeeds);
-  newDiv.setAttribute("id", idNeeds);
+  newDiv.classList.add(...classNeeds);
   newDiv.innerText = needyTxt;
   parent.appendChild(newDiv);
 }

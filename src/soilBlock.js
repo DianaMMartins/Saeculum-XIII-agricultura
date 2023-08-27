@@ -1,6 +1,5 @@
-import { createEl, plowing, watering } from "./acts";
-import { Player } from "./player";
-import { askForWater, askForX } from "./utils/utils";
+import { createEl } from "./acts";
+import { askForX } from "./utils/utils";
 
 export class SoilBlock {
   constructor(plant, x, y, parentLine) {
@@ -21,50 +20,21 @@ export class SoilBlock {
       // askForWater
       // if object class includes no-water and player h2o=can === true
       // doThisAct(actType, onthis.soil)
-      console.log('compare  ->', this.soil, this.soil.classList, this.soil.classList.length);
-
-      if (this.soil.classList.length === 1) {
-        askForX("⛏", "req", "plow", this.soil);
-      } else {
-        const compare = this.soil.firstChild.textContent;
-        console.log(compare, 3, this.soil, "heelll");
-        if (compare === " ") {
-          // askForX("🫘", "req", "plant-me", this.soil);
-          if (Player.playerAct === 0) {
-            this.updateSoil(["plowed"], "﹏", '🫘', ['req', 'plant-me'] );
-          }
-        }
-        if (compare === "plowed") {
-          askForX("🫘", "req", "plant-me", this.soil);
-          console.log("heiii", compare, this.soil);
-          if (Player.playerAct === 1) {
-            // this.updateSoil(["seed", "no-water"], "🫘");
-          }
-          console.log(1);
-        }
+      if (this.soilAct === 0) {
+        console.log("hi");
+        askForX("⛏", ["req", "plow-me"], this.soil);
+      // } else {
+      //   this.updateSoil('plowed', '﹏', 1)
       }
     });
   }
 
-  updateSoil(newClasses, newText, reqAct, reqClasses) {
-    this.soil.classList.add(...newClasses);
-    this.soil.title = newClasses[0];
+  updateSoil(newClass, newText, newAct) {
+    // newClass.map((eachNew) => {
+    //   this.soilClass.map((eachOld) => { if(eachNew !== eachOld) this.soilClass.push(eachNew)})
+    // })
+    this.soil.classList.add(newClass);
     this.soil.innerText = newText;
-    askForX(reqAct, reqClasses, reqId, this.soil);
-    console.log("bey", this.soil);
+    this.soilAct = newAct;
   }
-
-  // updateSoil(newClasses, newText,) {
-  //   this.soil.classList.add(...newClasses);
-  //   this.soil.title = newClasses[0];
-  //   this.soil.innerText = newText;
-  //   askForX("⛏", "req", "plow", this.soil);
-  //   console.log("bey", this.soil);
-  // }
-
-  // doAction() {}
-  // onclick EventListner
-  // askForWater function
-
-  // startPlantGrowth
 }
