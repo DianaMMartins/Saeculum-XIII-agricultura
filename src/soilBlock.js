@@ -21,9 +21,9 @@ export class SoilBlock {
       // askForWater
       // if object class includes no-water and player h2o=can === true
       // doThisAct(actType, onthis.soil)
-      console.log(compare, 3, this.soil, "heelll");
+      console.log('compare  ->', this.soil, this.soil.classList, this.soil.classList.length);
 
-      if (this.soil.innerText === "") {
+      if (this.soil.classList.length === 1) {
         askForX("⛏", "req", "plow", this.soil);
       } else {
         const compare = this.soil.firstChild.textContent;
@@ -42,17 +42,7 @@ export class SoilBlock {
           }
           console.log(1);
         }
-        //   case "🫘💧":
-        //     watering(this.watered);
-        //     if (this.soilClass.includes("watered")) {
-        //       setTimeout(startPlantGrowth, 2000, this.soil, "🌱", [
-        //         "seedling",
-        //         "no-water",
-        //       ]);
-        //     }
-        //     console.log(2, this.soil);
-        //     break;
-        // }
+
       }
     });
   }
