@@ -29,9 +29,9 @@ export class SoilBlock {
         const compare = this.soil.firstChild.textContent;
         console.log(compare, 3, this.soil, "heelll");
         if (compare === " ") {
-          askForX("🫘", "req", "plant-me", this.soil);
+          // askForX("🫘", "req", "plant-me", this.soil);
           if (Player.playerAct === 0) {
-            this.updateSoil(["plowed"], "﹏");
+            this.updateSoil(["plowed"], "﹏", '🫘', ['req', 'plant-me'] );
           }
         }
         if (compare === "plowed") {
@@ -42,16 +42,11 @@ export class SoilBlock {
           }
           console.log(1);
         }
-
       }
     });
   }
 
-  // soilOnCLick(){
-  //   this.soil
-  // }
-
-  updateSoil(newClasses, newText, reqAct, reqClasses, reqId) {
+  updateSoil(newClasses, newText, reqAct, reqClasses) {
     this.soil.classList.add(...newClasses);
     this.soil.title = newClasses[0];
     this.soil.innerText = newText;
