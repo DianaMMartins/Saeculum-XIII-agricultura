@@ -21,17 +21,19 @@ export class SoilBlock {
       // askForWater
       // if object class includes no-water and player h2o=can === true
       // doThisAct(actType, onthis.soil)
+      console.log(compare, 3, this.soil, "heelll");
+
       if (this.soil.innerText === "") {
         askForX("⛏", "req", "plow", this.soil);
       } else {
-        const compare = this.soil.title;
+        const compare = this.soil.firstChild.textContent;
         console.log(compare, 3, this.soil, "heelll");
-        // if (compare === " ") {
-        //   askForX("🫘", "req", "plant-me", this.soil);
-        //   if (Player.playerAct === 0) {
-        //     this.updateSoil(["plowed"], "﹏");
-        //   }
-        // }
+        if (compare === " ") {
+          askForX("🫘", "req", "plant-me", this.soil);
+          if (Player.playerAct === 0) {
+            this.updateSoil(["plowed"], "﹏");
+          }
+        }
         if (compare === "plowed") {
           askForX("🫘", "req", "plant-me", this.soil);
           console.log("heiii", compare, this.soil);
