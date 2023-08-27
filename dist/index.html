@@ -8,26 +8,32 @@
       body {
         background: darkslategrey;
         text-align: center;
-        font-size: 34px;
+        font-size: 36px;
         color: #612d15;
+        letter-spacing: -16px;
       }
       #page {
         background: linen;
-        max-width: -moz-fit-content;
-        max-width: fit-content;
+        /* max-width: -moz-fit-content;
+        max-width: fit-content; */
         margin: auto;
         display: block;
+        position: absolute;
+        top: 0;
+        width: max-content;
       }
       .soil-tbl {
-        background: #612d15;
+        position: relative;
+        background: rgb(97, 45, 21);
       }
       .soil {
         width: 75px;
         height: 75px;
         background: peru;
         position: relative;
+        font-size: 36px;
       }
-      .req-h2o {
+      .req {
         width: 33px;
         height: 33px;
         background: white;
@@ -39,15 +45,47 @@
         z-index: 2;
         border-radius: 30px 30px 30px 0px;
       }
-      .h2o-btn {
+      .action-tbl {
         position: absolute;
-        width: 300px;
+        width: 100%;
+      }
+      .action-tbl button {
+        width: calc( 100% / 5);
         height: 100px;
+        font-size: 70px;
+        letter-spacing: -16px;
+        padding: 0 50px;
+      }
+
+      /* .action-tbl .h2o-btn {
         background: powderblue;
         color: aqua;
         border: 1px solid darkblue;
-        font-size: 74px;
-      }
+      } */
+
+      /* .collect {
+        .zoom-in-zoom-out {
+          margin: 24px;
+          width: 50px;
+          height: 50px;
+          background: green;
+          animation: zoom-in-zoom-out 2s ease-out infinite;
+          border: 0mm solid yellow;
+          transition: all smooth;
+        }
+        @keyframes zoom-in-zoom-out {
+          0% {
+            transform: scale(1, 1);
+          }
+          50% {
+            transform: scale(1.15, 1.15);
+            border: 5px solid yellow;
+          }
+          100% {
+            transform: scale(1, 1);
+          }
+        }
+      } */
     </style>
   </head>
   <body>

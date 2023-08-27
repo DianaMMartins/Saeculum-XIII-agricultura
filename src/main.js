@@ -1,10 +1,12 @@
+import { ActionButton } from "./actionBtn";
+import { SoilBlock } from "./soilBlock";
+
 let mainDiv = document.getElementById("page");
-let soilLayer;
-const empty = "﹏";
-const plowed = "➿";
-const seed = "🫘";
+const soilArray = [];
+const empty = " ";
+const plowed = "﹏"; //🕳️ 🐇 🐿️ 🌰 🦯 🐂🦽 🐃 🛸 🍈 🌶 ⛏ 🌻 🍇 🫱 🖐 🫴 💢 ❔ 🫳 ⚱️ 🦗 💩 🪱 🤎 👑 💠 🏵️🟡💎 🤴 📜 ⏳⌛ 🧮 🧺
 const h20 = "💧";
-const seedling = "🌱";
+const seedling = "🌱"; //🌿
 const wheat = "🌾";
 const potato = "🥔";
 const carrot = "🥕";
@@ -16,117 +18,46 @@ const onion = "🧅";
 const garlic = "🧄";
 const broccoli = "🥦";
 const eggplant = "🍆";
+const h2oTxt = "🚿"; //🚿 ||🌧️
 const plow = "⛏️";
-const watering = "🚿"; //🚿 ||🌧️
+const seed = "🫘";
+const poop = "💩";
+const harvest = "🧺"; //🫳
+const coin = "🪙";
 
-const player = {
-  // needs to be an object
-  wateringCan: false,
-  seed: true,
-  seedType: wheat,
-  // needs a function that if it has water it can water plants
-};
-
-function createSoilBoard(x, y) {
+function createElBoard(x, y) {
   const soilBoard = document.createElement("table");
   soilBoard.classList.add("soil-tbl");
 
   for (let i = 0; i < y; i++) {
-    const newTR = document.createElement("tr");
-
-    newTR.classList.add("soil-r");
+    let line = document.createElement("tr");
+    line.classList.add("soil-r");
+    soilArray.push([]);
 
     for (let j = 0; j < x; j++) {
-      const newTD = document.createElement("td");
-      newTD.classList.add("soil");
-      newTD.setAttribute('id', j);
-      newTD.innerText = empty;
-      newTR.appendChild(newTD);
+      soilArray[i].push(new SoilBlock(empty, j, i, line));
     }
-    soilBoard.appendChild(newTR);
-    page.appendChild(soilBoard);
+    soilBoard.appendChild(line);
   }
+  mainDiv.appendChild(soilBoard);
 }
 
-function createH2oBtn() {
-  const h2oBtn = document.createElement("div");
-  h2oBtn.classList.add("h2o-btn");
-  h2oBtn.innerText = watering;
-  page.appendChild(h2oBtn);
-  h2oBtn.addEventListener("click", () => {
-    player.wateringCan = true;
-  });
-}
+function createActionBar(createBtns, btnTxt) {
+  const actionBar = document.createElement("table");
+  actionBar.classList.add("action-tbl");
 
-function askForWater(needsWater) {
-  const waterDiv = document.createElement("div");
-  waterDiv.classList.add("req-h2o");
-  waterDiv.innerText = h20;
-  needsWater.appendChild(waterDiv);
-}
-
-function wateringAct(needsWater) {
-  if (player.wateringCan) {
-    const toRemove = Object.values(document.getElementsByClassName('req-h2o')).filter(e => e.parentNode === needsWater)[0];
-    needsWater.removeChild(toRemove);
-
-    needsWater.classList.remove("no-water");
-    needsWater.classList.add("watered");
-    //   } else {
-    //     const message = "Collect water";
-    //     console.log(message);
+  for (let i = 0; i < createBtns.length; i++) {
+    new ActionButton(createBtns[i], btnTxt[i], actionBar);
   }
+  mainDiv.appendChild(actionBar);
 }
-
-function startPlantGrowth(growing, evolved, classesArray) {
-  // console.log(growing.innerText, evolved, 'hi');
-  growing.innerText = evolved;
-  growing.classList.add(...classesArray);
-  askForWater(growing);
-}
-
-//could be keydown
-//click -> check what it is -> if needs water, ask, -> if watered  make grow
-
-//issue is water is key to order of starting then removes in order, not clicked one
-mainDiv.addEventListener("click", (e) => {
-  const clickedElement = e.explicitOriginalTarget;
-  const checkText = clickedElement.textContent;
-  const checkValueOfObject = Object.values(clickedElement.classList);
-
-  //refactor for a switch ?!
-  if (checkText.includes(empty)) {
-    //refactor into separate function
-    clickedElement.innerText = seed;
-    const classesToAdd = ["seed", "no-water"];
-    clickedElement.classList.add(...classesToAdd);
-    askForWater(clickedElement);
-    return;
-  } else if (checkText.includes(seed)) {
-    if (checkValueOfObject.includes("no-water") && player.wateringCan) {
-      wateringAct(clickedElement);
-      setTimeout(startPlantGrowth, 5000, clickedElement, seedling, [
-        "seedling",
-        "no-water",
-      ]);
-      return;
-    } else if (checkValueOfObject.includes("no-water") && !player.wateringCan) {
-      console.log("need water to grow");
-    }
-  } else if (checkText.includes(seedling)) {
-    console.log("seedling");
-    // wait for water
-    // create timer and water div
-    // if water is filled, call changeSprite timer
-  } else if (checkText.includes(wheat)) {
-    console.log("end");
-    // call changeSprite timer
-  }
-});
 
 function startGame() {
-  createSoilBoard(12, 8);
-  createH2oBtn();
+  createElBoard(12, 8);
+  createActionBar(
+    ["plow-btn", "seed-btn", "h2o-btn", "poop-btn", "harvest-btn"],
+    [plow, seed, h2oTxt, poop, harvest]
+  );
 }
 
 startGame();
