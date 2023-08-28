@@ -1,10 +1,11 @@
-import { createEl } from "./acts";
-import { actionTypes } from "./enums/enum";
+import { createEl, action } from "./acts";
+import { actionTypes, soilRequests, soilStages } from "./enums/enum";
+import { Player } from "./player";
 
 export class SoilBlock {
   constructor(plant, x, y, parentLine) {
     this.plant = plant; //plant type
-    this.soilAct = 0; //
+    this.soilAct = soilStages.empty; //
     this.positionX = x;
     this.positionY = y;
     this.width = 75;
@@ -15,8 +16,10 @@ export class SoilBlock {
     this.soil = createEl("button", "soil", x, plant, parentLine);
 
     this.soil.addEventListener("click", () => {
-      if (this.soilAct === 0) {
-        console.log("hi");
+      if (
+        this.soilAct === soilStages.empty &&
+        this.soil.childElementCount < 1
+      ) {
         const asksFor = createEl(
           "div",
           ["req", "plow-me"],
@@ -24,14 +27,22 @@ export class SoilBlock {
           actionTypes.plow,
           this.soil
         );
-        //if playerAct matches soil act do update
+      }
+      if (
+        this.soilAct === soilStages.empty &&
+        Player.playerAct === soilRequests.plow
+      ) {
+        console.log("hi");
+        action(this.soil, soilStages.plowed);
+
+        const asksFor = createEl(
+          "div",
+          ["req", "poop-me"],
+          actionTypes.poop,
+          actionTypes.poop,
+          this.soil
+        );
       }
     });
-  }
-
-  updateSoil(newClass, newText, newAct) {
-    this.soil.classList.add(newClass);
-    this.soil.innerText = newText;
-    this.soilAct = newAct;
   }
 }

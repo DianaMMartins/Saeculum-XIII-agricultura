@@ -1,5 +1,6 @@
 import { createEl } from "./acts";
 import { Player } from "./player";
+import { actionTypes } from './enums/enum';
 
 export class ActionButton {
   constructor(classStr, innerTxt, parent) {
@@ -11,28 +12,22 @@ export class ActionButton {
     this.btn.addEventListener("click", () => {
       switch (this.classList) {
         case "plow-btn":
-          Player.playerAct = 0;
-          console.log(Player.playerAct, 0);
+          Player.playerAct = actionTypes.plow;
           break;
+          case "poop-btn":
+            Player.playerAct = actionTypes.poop;  
+            break;
         case "seed-btn":
-          Player.playerAct = 1;
-          console.log(Player.playerAct, 1);
+          Player.playerAct = actionTypes.seed;
           break;
         case "h2o-btn":
-          Player.playerAct = 2;
-          console.log(Player.playerAct, 2);
-
-          break;
-        case "poop-btn":
-          Player.playerAct = 3;
-          console.log(Player.playerAct, 3);
-
+          Player.playerAct = actionTypes.h2o;
           break;
         case "harvest-btn":
-          Player.playerAct = 4;
+          Player.playerAct = actionTypes.pick;
           console.log(Player.playerAct, 4);
 
-          // Player.cash++; //this can be a whole thing based on plant
+        // Player.cash++; //this can be a whole thing based on plant
       }
     });
   }

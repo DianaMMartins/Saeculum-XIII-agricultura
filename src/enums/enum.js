@@ -1,28 +1,32 @@
+//for player and mouse
 export const actionTypes = {
-  poop: "💩",
   plow: "⛏",
+  poop: "💩",
   seed: "🫘",
   h2o: "🚿",
   pick: "🧺",
 };
 
+// for speech bubbles
 export const soilRequests = {
-    poop: "💩",
-    plow: "⛏",
-    seed: "🫘",
-    h2o: '💧',
-    pick: "🧺",
-}
+  plow: "⛏",
+  poop: "💩",
+  seed: "🫘",
+  h2o: "💧",
+  pick: "🧺",
+};
 
+// soil text
 export const soilStages = {
-  empty: " ",
-  fertile: "🤎",
+  empty: "‧˚⋅",
   plowed: "﹏",
+  fertile: "☁",
   seeded: "🫘",
   seedling: "🌱",
   ready: "🌾",
 };
 
+// to vary soilStages.ready and seed variety
 export const crop = {
   wheat: "🌾",
   potato: "🥔",
@@ -45,6 +49,7 @@ export const threats = {
   rabbit: "🐇",
   squirrel: "🐿️",
   locus: "🦗",
+  snails: "🐌",
   thieves: "🫳",
 };
 //🕳️ 🌰 🦯 🐂🦽 🐃 🛸 ⛏ 🫱 🖐 🫴 💢 ❔ 🫳 ⚱️ 🦗 💩 🪱 🤎 👑 💠 🏵️🟡💎 🤴 📜 ⏳⌛ 🧮 🌿

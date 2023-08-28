@@ -1,6 +1,8 @@
+import { actionTypes } from './enums/enum';
+
 export class Player {
   constructor(seedType) {
-    this.playerAct = 0
+    this.playerAct = actionTypes.plow
     this.seedType = seedType;
     this.cash = 0;
     this.stock = {};
