@@ -1,7 +1,3 @@
-import { Player } from "./player";
-// import { SoilBlock } from './soilBlock';
-// import { askForWater, startPlantGrowth, updateSoil } from "./utils/utils";
-
 export function createEl(type, newClass, newId, newText, parent) {
   const el = document.createElement(type);
   if (Array.isArray(newClass)) {
@@ -17,7 +13,7 @@ export function createEl(type, newClass, newId, newText, parent) {
 
 export function action(needsAction) {
   //  console.log(actionableEl);//need to remove oldClasses
-  
+
 }
 
 // export function plowing(needsPlowing) {

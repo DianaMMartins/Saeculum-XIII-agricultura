@@ -6,25 +6,9 @@ import { createEl } from "./acts";
 let mainDiv = document.getElementById("page");
 const soilArray = [];
 const empty = " ";
-const plowed = "﹏"; //🕳️ 🐇 🐿️ 🌰 🦯 🐂🦽 🐃 🛸 🍈 🌶 ⛏ 🌻 🍇 🫱 🖐 🫴 💢 ❔ 🫳 ⚱️ 🦗 💩 🪱 🤎 👑 💠 🏵️🟡💎 🤴 📜 ⏳⌛ 🧮 🧺
+const plowed = "﹏"; //🕳️ 🌰 🦯 🐂🦽 🐃 🛸 ⛏ 🫱 🖐 🫴 💢 ❔ 🫳 ⚱️ 🦗 💩 🪱 🤎 👑 💠 🏵️🟡💎 🤴 📜 ⏳⌛ 🧮 🧺
 const h20 = "💧";
 const seedling = "🌱"; //🌿
-const wheat = "🌾";
-const potato = "🥔";
-const carrot = "🥕";
-const leafy = "🥬";
-const corn = "🌽";
-const tomato = "🍅";
-const pepper = "🫑";
-const onion = "🧅";
-const garlic = "🧄";
-const broccoli = "🥦";
-const eggplant = "🍆";
-// const h2oTxt = "🚿"; //🚿 ||🌧️
-// const plow = "⛏️";
-// const seed = "🫘";
-// const poop = "💩";
-// const harvest = "🧺"; //🫳
 const coin = "🪙";
 
 function createElBoard(x, y) {
