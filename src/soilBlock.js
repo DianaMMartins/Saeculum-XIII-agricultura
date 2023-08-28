@@ -22,6 +22,7 @@ export class SoilBlock {
       // doThisAct(actType, onthis.soil)
       if (this.soilAct === 0) {
         console.log("hi");
+        createEl('div', "⛏", ["req", "plow-me"], this.soil, needyTxt, parent)
         askForX("⛏", ["req", "plow-me"], this.soil);
       // } else {
       //   this.updateSoil('plowed', '﹏', 1)

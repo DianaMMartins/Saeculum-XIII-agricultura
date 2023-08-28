@@ -1,5 +1,7 @@
 import { ActionButton } from "./actionBtn";
 import { SoilBlock } from "./soilBlock";
+import { actionTypes } from "./enums/enum";
+import { createEl } from "./acts";
 
 let mainDiv = document.getElementById("page");
 const soilArray = [];
@@ -18,11 +20,11 @@ const onion = "🧅";
 const garlic = "🧄";
 const broccoli = "🥦";
 const eggplant = "🍆";
-const h2oTxt = "🚿"; //🚿 ||🌧️
-const plow = "⛏️";
-const seed = "🫘";
-const poop = "💩";
-const harvest = "🧺"; //🫳
+// const h2oTxt = "🚿"; //🚿 ||🌧️
+// const plow = "⛏️";
+// const seed = "🫘";
+// const poop = "💩";
+// const harvest = "🧺"; //🫳
 const coin = "🪙";
 
 function createElBoard(x, y) {
@@ -42,22 +44,16 @@ function createElBoard(x, y) {
   mainDiv.appendChild(soilBoard);
 }
 
-function createActionBar(createBtns, btnTxt) {
-  const actionBar = document.createElement("table");
-  actionBar.classList.add("action-tbl");
-
-  for (let i = 0; i < createBtns.length; i++) {
-    new ActionButton(createBtns[i], btnTxt[i], actionBar);
-  }
-  mainDiv.appendChild(actionBar);
+function createActionBar(btnsObj) {
+  const actionBar = createEl("table", "action-tbl", "act-bar", "", mainDiv);
+  Object.entries(btnsObj).forEach(
+    (e) => new ActionButton(e[0] + "-btn", e[1], actionBar)
+  );
 }
 
 function startGame() {
   createElBoard(12, 8);
-  createActionBar(
-    ["plow-btn", "seed-btn", "h2o-btn", "poop-btn", "harvest-btn"],
-    [plow, seed, h2oTxt, poop, harvest]
-  );
+  createActionBar(actionTypes);
 }
 
 startGame();

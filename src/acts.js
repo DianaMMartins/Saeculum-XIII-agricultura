@@ -4,15 +4,20 @@ import { Player } from "./player";
 
 export function createEl(type, newClass, newId, newText, parent) {
   const el = document.createElement(type);
-  el.classList.add(newClass);
+  if (Array.isArray(newClass)) {
+    el.classList.add(...newClass);
+  } else {
+    el.classList.add(newClass);
+  }
   el.setAttribute("id", newId);
   el.innerText = newText;
   parent.appendChild(el);
   return el;
 }
 
-export function action(actionableEl) {
-//  console.log(actionableEl);//need to remove oldClasses
+export function action(needsAction) {
+  //  console.log(actionableEl);//need to remove oldClasses
+  
 }
 
 // export function plowing(needsPlowing) {

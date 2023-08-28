@@ -7,11 +7,10 @@
 
 import { createEl } from "../acts";
 
+//on click element ask for action
 export function askForX(needyTxt, classNeeds, parent) {
-  const newDiv = document.createElement("div");
-  newDiv.classList.add(...classNeeds);
-  newDiv.innerText = needyTxt;
-  parent.appendChild(newDiv);
+  console.log(parent);
+  createEl('div', classNeeds, needyTxt, needyTxt, parent) 
 }
 
 //money handle
