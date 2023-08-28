@@ -2,9 +2,17 @@ export const actionTypes = {
   poop: "💩",
   plow: "⛏",
   seed: "🫘",
-  h20: "🚿",
+  h2o: "🚿",
   pick: "🧺",
 };
+
+export const soilRequests = {
+    poop: "💩",
+    plow: "⛏",
+    seed: "🫘",
+    h2o: '💧',
+    pick: "🧺",
+}
 
 export const soilStages = {
   empty: " ",
@@ -39,3 +47,4 @@ export const threats = {
   locus: "🦗",
   thieves: "🫳",
 };
+//🕳️ 🌰 🦯 🐂🦽 🐃 🛸 ⛏ 🫱 🖐 🫴 💢 ❔ 🫳 ⚱️ 🦗 💩 🪱 🤎 👑 💠 🏵️🟡💎 🤴 📜 ⏳⌛ 🧮 🌿
