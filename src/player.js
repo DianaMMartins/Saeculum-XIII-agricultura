@@ -7,8 +7,4 @@ export class Player {
     this.cash = 0;
     this.stock = {};
   }
-
-  setPlayerAct(newAct) {
-    this.playerAct = newAct;
-  }
 }

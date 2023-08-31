@@ -12,7 +12,8 @@ export function createEl(type, newClass, newId, newText, parent) {
 }
 
 export function action(needsAction, nextAction) {
-  console.log( Object.toString(nextAction.key));
-  needsAction.removeChild(needsAction.lastElementChild)
+  if (!needsAction.childElementCount === 0) { 
+    needsAction.removeChild(needsAction.lastElementChild)
+  }
   needsAction.innerText = nextAction;
 }
