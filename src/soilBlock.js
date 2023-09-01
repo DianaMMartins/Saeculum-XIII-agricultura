@@ -86,12 +86,32 @@ export class SoilBlock {
           this.soilAct === soilStages.seedling &&
           Player.playerAct === soilRequests.h2o
         ) {
-          console.log("next!!!!");
+          const plantTime = 3000;
+          const howManyTimesToAskForH2o = 2;
+          this.soil.removeChild(this.soil.lastChild);
+          setTimeout(
+            this.growPlant,
+            plantTime,
+            this.soil,
+            howManyTimesToAskForH2o,
+            soilStages.ready,
+            actionTypes.pick
+          );
+          if (counter === howManyTimesToAskForH2o) {
+            this.updateSoilAct(soilStages.ready);
+          }
+          console.log('in if', this.soilAct);
         } else if (
           this.soilAct === soilStages.ready &&
           Player.playerAct === soilRequests.pick
         ) {
-          console.log("last!!!!");
+          console.log("last!!!!", this.soilAct);
+          this.updateSoil(
+            this.soil,
+            soilStages.empty,
+            "plow-me",
+            actionTypes.plow
+          );
         }
       }
     });
@@ -109,6 +129,7 @@ export class SoilBlock {
 
   growPlant(parent, nRounds, nextSoilStage, nextAction) {
     if (!this.isGrowing) {
+      // console.log(this.isGrowing);
       this.isGrowing = true;
       if (counter < nRounds) {
         counter++;
@@ -124,7 +145,7 @@ export class SoilBlock {
         action(parent, nextSoilStage);
         createEl("div", ["req", "water-me"], nextAction, nextAction, parent);
       }
+      this.isGrowing = false;
     }
-    this.isGrowing = false;
   }
 }

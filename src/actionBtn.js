@@ -30,7 +30,7 @@ export class ActionButton {
           console.log(Player.playerAct, "player");
 
           break;
-        case "harvest-btn":
+        case "pick-btn":
           Player.playerAct = actionTypes.pick;
           console.log(Player.playerAct, 4);
 
