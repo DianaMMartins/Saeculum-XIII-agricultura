@@ -1,7 +1,6 @@
 import { createEl, action } from "./acts";
 import { actionTypes, soilRequests, soilStages } from "./enums/enum";
 import { Player } from "./player";
-let counter = 0;
 
 export class SoilBlock {
   constructor(plant, x, y, parentLine) {
@@ -9,13 +8,22 @@ export class SoilBlock {
     this.soilAct = soilStages.empty; //
     this.positionX = x;
     this.positionY = y;
-    this.width = 75;
-    this.height = 75;
+    this.width = "5vw";
+    this.height = "5vw";
     this.soilClass = ["soil"];
     this.color = "#cd853f";
     this.isGrowing = false;
+    this.counter = 0;
 
-    this.soil = createEl("button", "soil", x, plant, parentLine);
+    this.soil = createEl(
+      "div",
+      "soil",
+      x,
+      plant,
+      parentLine,
+      this.width,
+      this.height
+    );
 
     this.soil.addEventListener("click", () => {
       if (!event.detail || event.detail == 1) {
@@ -45,8 +53,6 @@ export class SoilBlock {
           this.soilAct === soilStages.plowed &&
           Player.playerAct === soilRequests.poop
         ) {
-          console.log("gets fertilizer");
-
           this.updateSoil(
             this.soil,
             soilStages.pooped,
@@ -57,7 +63,6 @@ export class SoilBlock {
           this.soilAct === soilStages.pooped &&
           Player.playerAct === soilRequests.seed
         ) {
-          console.log("gets seed");
           this.updateSoil(
             this.soil,
             soilStages.seeded,
@@ -70,16 +75,19 @@ export class SoilBlock {
         ) {
           const plantTime = 2000;
           const howManyTimesToAskForH2o = 2;
-          this.soil.removeChild(this.soil.lastChild);
-          setTimeout(
-            this.growPlant,
-            plantTime,
-            this.soil,
-            howManyTimesToAskForH2o,
-            soilStages.seedling,
-            actionTypes.h2o
-          );
-          if (counter === howManyTimesToAskForH2o) {
+          if (!this.isGrowing) {
+            this.soil.removeChild(this.soil.lastChild);
+            this.isGrowing = true;
+            setTimeout(
+              this.growPlant,
+              plantTime,
+              this,
+              howManyTimesToAskForH2o,
+              soilStages.seedling,
+              actionTypes.h2o
+            );
+          }
+          if (this.counter === howManyTimesToAskForH2o) {
             this.updateSoilAct(soilStages.seedling);
           }
         } else if (
@@ -88,30 +96,32 @@ export class SoilBlock {
         ) {
           const plantTime = 3000;
           const howManyTimesToAskForH2o = 2;
-          this.soil.removeChild(this.soil.lastChild);
-          setTimeout(
-            this.growPlant,
-            plantTime,
-            this.soil,
-            howManyTimesToAskForH2o,
-            soilStages.ready,
-            actionTypes.pick
-          );
-          if (counter === howManyTimesToAskForH2o) {
+          if (!this.isGrowing) {
+            this.soil.removeChild(this.soil.lastChild);
+            this.isGrowing = true;
+            setTimeout(
+              this.growPlant,
+              plantTime,
+              this,
+              howManyTimesToAskForH2o,
+              soilStages.ready,
+              actionTypes.pick
+            );
+          }
+          if (this.counter === howManyTimesToAskForH2o) {
             this.updateSoilAct(soilStages.ready);
           }
-          console.log('in if', this.soilAct);
         } else if (
           this.soilAct === soilStages.ready &&
           Player.playerAct === soilRequests.pick
         ) {
-          console.log("last!!!!", this.soilAct);
           this.updateSoil(
             this.soil,
             soilStages.empty,
             "plow-me",
             actionTypes.plow
           );
+          //add coin logic
         }
       }
     });
@@ -128,24 +138,20 @@ export class SoilBlock {
   }
 
   growPlant(parent, nRounds, nextSoilStage, nextAction) {
-    if (!this.isGrowing) {
-      // console.log(this.isGrowing);
-      this.isGrowing = true;
-      if (counter < nRounds) {
-        counter++;
-        createEl(
-          "div",
-          ["req", "water-me"],
-          actionTypes.h2o,
-          actionTypes.h2o,
-          parent
-        );
-      } else {
-        counter = 0;
-        action(parent, nextSoilStage);
-        createEl("div", ["req", "water-me"], nextAction, nextAction, parent);
-      }
-      this.isGrowing = false;
+    if (parent.counter < nRounds) {
+      createEl(
+        "div",
+        ["req", "water-me"],
+        actionTypes.h2o,
+        actionTypes.h2o,
+        parent.soil
+      );
+      parent.counter++;
+    } else {
+      action(parent.soil, nextSoilStage);
+      createEl("div", ["req", "water-me"], nextAction, nextAction, parent.soil);
+      parent.counter = 0;
     }
+    parent.isGrowing = false;
   }
 }

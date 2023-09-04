@@ -7,4 +7,8 @@ export class Player {
     this.cash = 0;
     this.stock = {};
   }
+
+  sellCrop(crop){
+    this.cash += crop.sellPrice;
+  }
 }
