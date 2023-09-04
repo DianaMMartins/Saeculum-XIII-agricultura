@@ -7,34 +7,45 @@
     <style>
       body {
         background: darkslategrey;
-        text-align: center;
-        font-size: 36px;
-        color: #612d15 !important;
-        letter-spacing: -16px;
+        display: flex;
+        overflow: hidden;
+        align-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+        justify-content: flex-start;
+        margin: 0;
+        width: 100vw;
       }
-      /* button{
-        border: 1px solid #612d15;
-      } */
       #page {
-        background: linen;
-        /* max-width: -moz-fit-content;
-        max-width: fit-content; */
-        margin: auto;
-        display: block;
-        position: absolute;
-        top: 0;
-        width: max-content;
+        background-color: aqua;
+        width: calc(650px + (1500 - 650) * ((100vw - 500px) / (1920 - 500)));
+        height: calc(400px + (1150 - 400) * ((100vh - 500px) / (1920 - 500)));
       }
-      .soil-tbl {
+
+      /* .soil-tbl {
         position: relative;
         background: rgb(97, 45, 21);
+        display: flex;
+        flex-direction: column;
+        width: calc(250px + (1500 - 650) * ((100vw - 500px) / (1920 - 500)));
+        height: calc(50px + (1150 - 365) * ((100vh - 500px) / (1920 - 500)));
+      } */
+      .soil-r {
+        display: flex;
+        flex-wrap: nowrap;
+        background: peru;
+
       }
       .soil {
-        width: 75px;
-        height: 75px;
+        width: calc(100% / 12);
+        height: calc(100% / 8);
         background: peru;
         position: relative;
-        font-size: 36px;
+        font-size: 44px;
+        text-align: center;
+        margin: 16px;
+        padding: 4px;
       }
       .req {
         width: 33px;
@@ -49,46 +60,44 @@
         border-radius: 30px 30px 30px 0px;
       }
       .action-tbl {
-        position: absolute;
         width: 100%;
         display: flex;
       }
       .action-tbl button {
-        width: calc( 100% / 5);
+        width: calc(100% / 5);
         height: 100px;
         font-size: 70px;
         padding: 0 50px;
       }
 
-      /* .action-tbl .h2o-btn {
-        background: powderblue;
-        color: aqua;
-        border: 1px solid darkblue;
-      } */
-
       /* .collect {
-        .zoom-in-zoom-out {
-          margin: 24px;
-          width: 50px;
-          height: 50px;
-          background: green;
-          animation: zoom-in-zoom-out 2s ease-out infinite;
-          border: 0mm solid yellow;
-          transition: all smooth;
+              .zoom-in-zoom-out {
+                margin: 24px;
+                width: 50px;
+                height: 50px;
+                background: green;
+                animation: zoom-in-zoom-out 2s ease-out infinite;
+                border: 0mm solid yellow;
+                transition: all smooth;
+              }
+              @keyframes zoom-in-zoom-out {
+                0% {
+                  transform: scale(1, 1);
+                }
+                50% {
+                  transform: scale(1.15, 1.15);
+                  border: 5px solid yellow;
+                }
+                100% {
+                  transform: scale(1, 1);
+                }
+              }
+            } */
+      @media only screen and (max-width: 600px) {
+        #page {
+          transform: rotate(90deg);
         }
-        @keyframes zoom-in-zoom-out {
-          0% {
-            transform: scale(1, 1);
-          }
-          50% {
-            transform: scale(1.15, 1.15);
-            border: 5px solid yellow;
-          }
-          100% {
-            transform: scale(1, 1);
-          }
-        }
-      } */
+      }
     </style>
   </head>
   <body>

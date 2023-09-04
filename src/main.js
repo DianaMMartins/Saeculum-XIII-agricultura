@@ -8,11 +8,11 @@ const soilArray = [];
 const coin = "🪙";
 
 function createElBoard(x, y) {
-  const soilBoard = document.createElement("table");
+  const soilBoard = document.createElement("div");
   soilBoard.classList.add("soil-tbl");
 
   for (let i = 0; i < y; i++) {
-    let line = document.createElement("tr");
+    let line = document.createElement("div");
     line.classList.add("soil-r");
     soilArray.push([]);
 
