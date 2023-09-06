@@ -16,36 +16,31 @@
         justify-content: flex-start;
         margin: 0;
         width: 100vw;
+        cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🐧</text></svg>")
+      16 0,
+    auto;
       }
       #page {
         background-color: aqua;
         width: calc(650px + (1500 - 650) * ((100vw - 500px) / (1920 - 500)));
         height: calc(400px + (1150 - 400) * ((100vh - 500px) / (1920 - 500)));
       }
-
-      /* .soil-tbl {
-        position: relative;
-        background: rgb(97, 45, 21);
-        display: flex;
-        flex-direction: column;
-        width: calc(250px + (1500 - 650) * ((100vw - 500px) / (1920 - 500)));
-        height: calc(50px + (1150 - 365) * ((100vh - 500px) / (1920 - 500)));
-      } */
       .soil-r {
         display: flex;
         flex-wrap: nowrap;
         background: peru;
-
       }
       .soil {
         width: calc(100% / 12);
-        height: calc(100% / 8);
+        max-height: calc(100% / 8);
         background: peru;
         position: relative;
         font-size: 44px;
         text-align: center;
         margin: 16px;
         padding: 4px;
+        line-height: 44px;
+        border: 1px solid peru;
       }
       .req {
         width: 33px;
@@ -54,8 +49,8 @@
         border: 1px solid black;
         font-size: 25px;
         position: absolute;
-        top: -10px;
-        right: -10px;
+        top: -30px;
+        right: -25px;
         z-index: 2;
         border-radius: 30px 30px 30px 0px;
       }

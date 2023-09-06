@@ -1,6 +1,7 @@
 import { createEl, action } from "./acts";
 import { actionTypes, soilRequests, soilStages } from "./enums/enum";
 import { Player } from "./player";
+import { plantType } from './enums/plantEnums';
 
 export class SoilBlock {
   constructor(plant, x, y, parentLine) {
@@ -14,6 +15,7 @@ export class SoilBlock {
     this.color = "#cd853f";
     this.isGrowing = false;
     this.counter = 0;
+    this.seedType = plantType.wheat;
 
     this.soil = createEl(
       "div",
@@ -63,6 +65,9 @@ export class SoilBlock {
           this.soilAct === soilStages.pooped &&
           Player.playerAct === soilRequests.seed
         ) {
+          //check this.plantType.seed selected
+          // update this.seedtype to seed selected
+          // 
           this.updateSoil(
             this.soil,
             soilStages.seeded,
@@ -121,6 +126,7 @@ export class SoilBlock {
             "plow-me",
             actionTypes.plow
           );
+          //on pick, based on player seed type added to 'this' adds up the right amount of money
           //add coin logic
         }
       }
