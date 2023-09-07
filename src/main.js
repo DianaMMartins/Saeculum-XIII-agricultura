@@ -2,6 +2,7 @@ import { ActionButton } from "./actionBtn";
 import { SoilBlock } from "./soilBlock";
 import { actionTypes, soilStages } from "./enums/enum";
 import { createEl } from "./acts";
+import { plantType } from "./enums/plantEnums";
 
 let mainDiv = document.getElementById("page");
 const soilArray = [];
@@ -31,9 +32,32 @@ function createActionBar(btnsObj) {
   );
 }
 
+function createPlantSelection(seedSelection) {
+  const parent = document.getElementById("act-bar").childNodes[2];
+  const plantSelectionButtons = createEl(
+    "div",
+    "plant-selection",
+    "",
+    "",
+    parent
+  );
+  Object.entries(seedSelection).forEach(
+    (e) => {
+      const plant = e[1].ready;
+      createEl(
+        "div",
+        "plant-choice",
+        e[0],
+        plant,
+        plantSelectionButtons
+      );
+    });
+}
+
 function startGame() {
   createElBoard(12, 8);
   createActionBar(actionTypes);
+  createPlantSelection(plantType);
 }
 
 startGame();
