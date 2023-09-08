@@ -8,7 +8,6 @@ export class ActionButton {
     this.text = innerTxt;
 
     this.btn = createEl("button", classStr, "act", innerTxt, parent);
-
     this.btn.addEventListener("click", () => {
       switch (this.classList) {
         case "plow-btn":
@@ -31,8 +30,8 @@ export class ActionButton {
         case "pick-btn":
           Player.playerAct = actionTypes.pick;
           this.updateCursor(actionTypes.pick);
+          // Player.cash++; //this can be a whole thing based on plant
           break;
-        // Player.cash++; //this can be a whole thing based on plant
       }
     });
   }
@@ -40,7 +39,7 @@ export class ActionButton {
   updateCursor(emoji) {
     const parent = document.getElementsByClassName("soil-tbl")[0];
     const newCursor =
-      `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='68' style='font-size:36px;'><text y='45%'>` +
+      `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='68' height='68' style='font-size:36px;'><text y='45%'>` +
       emoji +
       `</text></svg>") 16 0, auto`;
     parent.style.cursor = newCursor;

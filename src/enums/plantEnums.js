@@ -17,7 +17,7 @@ export const plantType = {
         ready:'🌽',
         sellPrice: 2,
     },
-    carrots: {
+    carrot: {
         isBlocked: true,
         growTime: 3000,
         howThirsty: 3,
