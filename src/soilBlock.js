@@ -1,7 +1,7 @@
 import { createEl, action } from "./acts";
 import { actionTypes, soilRequests, soilStages } from "./enums/enum";
 import { Player } from "./player";
-import { plantType } from './enums/plantEnums';
+// import { plantType } from './enums/plantEnums';
 
 export class SoilBlock {
   constructor(plant, x, y, parentLine) {
@@ -9,10 +9,10 @@ export class SoilBlock {
     this.positionX = x;
     this.positionY = y;
     this.soilClass = ["soil"];
-    this.seedPlanted = plantType.wheat;
+    this.seedPlanted = Player.seedType; //player should choose and then 
     this.soilAct = soilStages.empty; //
     this.counter = 0;
-    this.isGrowing = false;
+    this.isGrowing = false; //should be from seed selected
     this.soil = createEl(
       "div",
       "soil",
@@ -52,7 +52,7 @@ export class SoilBlock {
           Player.playerAct === soilRequests.poop
         ) {
           //get seedPlanted.seed
-          console.log(this.seedPlanted);
+          console.log(this.seedPlanted, 'checking');
           this.updateSoil(
             this,
             soilStages.pooped,

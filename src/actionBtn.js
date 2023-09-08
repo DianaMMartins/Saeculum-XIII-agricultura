@@ -7,7 +7,7 @@ export class ActionButton {
     this.classList = classStr;
     this.text = innerTxt;
 
-    this.btn = createEl("button", classStr, "act", innerTxt, parent);
+    this.btn = createEl("button", "act", classStr, innerTxt, parent);
     this.btn.addEventListener("click", () => {
       switch (this.classList) {
         case "plow-btn":
@@ -41,7 +41,17 @@ export class ActionButton {
     const newCursor =
       `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='68' height='68' style='font-size:36px;'><text y='45%'>` +
       emoji +
-      `</text></svg>") 16 0, auto`;
+      `🧑‍🌾</text></svg>") 16 0, auto`;
     parent.style.cursor = newCursor;
+  }
+
+  updateSeedBtn(selectedCrop) {
+    const parent = document.getElementById("seed-btn");
+    //change parent text
+    parent.innerText = selectedCrop.ready;
+    //call update soil selected crop 
+    this.updateCursor(actionTypes.seed);
+    console.log('hi',Player.playerAct, selectedCrop);
+    //after other action button has been clicked, revert it back!!!
   }
 }
