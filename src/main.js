@@ -15,6 +15,7 @@ function createElBoard(x, y) {
   for (let i = 0; i < y; i++) {
     let line = document.createElement("div");
     line.classList.add("soil-r");
+    line.style.gridRow = i + 1;
     soilArray.push([]);
 
     for (let j = 0; j < x; j++) {
