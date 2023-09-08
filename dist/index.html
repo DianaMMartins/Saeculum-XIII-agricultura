@@ -5,8 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
+      :root {
+        --charcoal: #282518;
+        --choc-one: #623b22;
+        --cream: #f4ebd0;
+        --dry-leaf: #999571;
+        --dry-green: #615f48;
+        --green: #7c832d;
+        --soil: #b68d40;
+      }
       body {
-        background: darkslategrey;
+        background: var(--cream);
         display: flex;
         overflow: hidden;
         align-content: center;
@@ -18,44 +27,45 @@
         width: 100vw;
       }
       #page {
-        background-color: aqua;
         width: calc(650px + (1500 - 650) * ((100vw - 500px) / (1920 - 500)));
         height: calc(400px + (1150 - 400) * ((100vh - 500px) / (1920 - 500)));
       }
       .soil-r {
         display: flex;
         flex-wrap: nowrap;
-        background: peru;
+        background: var(--soil);
       }
       .soil {
         width: calc(100% / 12);
         max-height: calc(100% / 8);
-        background: peru;
+        background: var(--soil);
         position: relative;
         font-size: 44px;
         text-align: center;
         margin: 16px;
         padding: 4px;
         line-height: 44px;
-        border: 1px solid peru;
+        /* color: var(--charcoal); */
       }
       .req {
         width: 33px;
         height: 33px;
         background: white;
-        border: 1px solid black;
+        border: 1px solid var(--charcoal);
         font-size: 25px;
         position: absolute;
         top: -30px;
         right: -25px;
         z-index: 2;
         border-radius: 30px 30px 30px 0px;
+        line-height: 36px;
       }
       .action-tbl {
         width: 100%;
         display: flex;
       }
       .action-tbl button {
+        background-color: var(--dry-green);
         width: calc(100% / 5);
         height: 100px;
         font-size: 70px;
@@ -70,8 +80,9 @@
         position: absolute;
         left: 0;
         width: -moz-available;
-        background-color:olive;
+        background-color: var;
         margin-top: 5px;
+        background-color: var(--dry-leaf);
       }
       .plant-choice {
         font-size: 32px;
