@@ -1,10 +1,7 @@
-export function createEl(
-  type,
-  newClass,
-  newId,
-  newText,
-  parent,
-) {
+import { ActionButton } from './actionBtn';
+import { actionTypes } from './enums/enum';
+
+export function createEl(type, newClass, newId, newText, parent) {
   const el = document.createElement(type);
   if (Array.isArray(newClass)) {
     el.classList.add(...newClass);
@@ -23,4 +20,19 @@ export function action(needsAction, nextAction) {
     needsAction.removeChild(needsAction.lastElementChild);
   }
   needsAction.innerText = nextAction;
+}
+
+export function updateSeedBtn(selectedCrop) {
+  const parent = document.getElementById("seed-btn");
+  parent.innerText = selectedCrop.ready;
+  ActionButton.prototype.updateCursor(actionTypes.seed);
+}
+
+export function  updateCursor(emoji) {
+  const parent = document.getElementsByClassName("soil-tbl")[0];
+  const newCursor =
+    `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='68' height='68' style='font-size:36px;'><text y='45%'>` +
+    emoji +
+    `🧑‍🌾</text></svg>") 16 0, auto`;
+  parent.style.cursor = newCursor;
 }
