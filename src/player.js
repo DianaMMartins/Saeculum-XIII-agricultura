@@ -1,22 +1,9 @@
-import { actionTypes } from './enums/enum';
+import { actionTypes } from "./enums/enum";
+import { plantType } from "./enums/plantEnums";
 
-export class Player {
-  constructor(seedType) {
-    this.playerAct = actionTypes.plow
-    this.seedType = seedType;
-    this.cash = 0;
-    this.stock = {};
-  }
-
-  updateSeedType(newSelection) {
-    
-    addEventListener('click', (e) => {
-      const buttons = document.getElementsByClassName('plant-selection');
-      console.log(buttons);
-    })
-  }
-
-  sellCrop(crop){
-    this.cash += crop.sellPrice;
-  }
-}
+export const player = {
+  playerAct: actionTypes.plow,
+  seedType: plantType.wheat,
+  cash: 0,
+  stock: [],
+};

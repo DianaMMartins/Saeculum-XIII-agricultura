@@ -1,7 +1,7 @@
 import { createEl, updateSeedBtn } from "./acts";
-import { Player } from "./player";
-import { plantType } from "./enums/plantEnums";
-import { ActionButton } from "./actionBtn";
+import { player } from "./player";
+import { actionTypes } from "./enums/enum";
+
 export class SeedSelectionBtn {
   constructor(id, classStr, selectedCrop, parent) {
     this.id = id;
@@ -10,8 +10,9 @@ export class SeedSelectionBtn {
     this.isBlocked = selectedCrop.isBlocked;
     this.btn = createEl("button", classStr, "", selectedCrop.ready, parent);
     this.btn.addEventListener("click", () => {
-    //   ActionButton.prototype.updateSeedBtn(selectedCrop);
-    updateSeedBtn(selectedCrop);
+      updateSeedBtn(selectedCrop);
+      player.seedType = selectedCrop;
+      player.playerAct = actionTypes.seed;
     });
   }
 }

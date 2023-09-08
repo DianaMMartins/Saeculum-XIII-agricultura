@@ -35,16 +35,10 @@ function createActionBar(btnsObj) {
 }
 
 function createPlantSelection(seedSelection) {
-  // const parent = document.getElementById("act-bar");
   const plantSelectionBar = createEl("table", "selection-tbl", "", "", mainDiv);
   Object.entries(seedSelection).forEach(
-    (e) => 
-      new SeedSelectionBtn(
-        e[0],
-        "seed-choice-btn",
-        e[1],
-        plantSelectionBar
-      )
+    (e) =>
+      new SeedSelectionBtn(e[0], "seed-choice-btn", e[1], plantSelectionBar)
   );
 }
 

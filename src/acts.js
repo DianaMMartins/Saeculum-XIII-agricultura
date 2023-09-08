@@ -1,5 +1,7 @@
-import { ActionButton } from './actionBtn';
-import { actionTypes } from './enums/enum';
+import { ActionButton } from "./actionBtn";
+import { actionTypes } from "./enums/enum";
+import { player } from './player';
+
 
 export function createEl(type, newClass, newId, newText, parent) {
   const el = document.createElement(type);
@@ -25,14 +27,20 @@ export function action(needsAction, nextAction) {
 export function updateSeedBtn(selectedCrop) {
   const parent = document.getElementById("seed-btn");
   parent.innerText = selectedCrop.ready;
-  ActionButton.prototype.updateCursor(actionTypes.seed);
+  console.log(selectedCrop.ready, "updateseedbtn");
+  updateCursor(actionTypes.seed);
 }
 
-export function  updateCursor(emoji) {
+export function updateCursor(emoji) {
+  //if is not type of seed/crop change emoji back to seed
   const parent = document.getElementsByClassName("soil-tbl")[0];
   const newCursor =
     `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='68' height='68' style='font-size:36px;'><text y='45%'>` +
     emoji +
     `🧑‍🌾</text></svg>") 16 0, auto`;
   parent.style.cursor = newCursor;
+}
+
+export function sellProduce(sellPrice) {
+  player.cash += sellPrice;
 }
