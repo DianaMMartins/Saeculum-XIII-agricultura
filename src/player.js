@@ -8,6 +8,14 @@ export class Player {
     this.stock = {};
   }
 
+  updateSeedType(newSelection) {
+    
+    addEventListener('click', (e) => {
+      const buttons = document.getElementsByClassName('plant-selection');
+      console.log(buttons);
+    })
+  }
+
   sellCrop(crop){
     this.cash += crop.sellPrice;
   }

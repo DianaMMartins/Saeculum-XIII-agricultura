@@ -1,23 +1,35 @@
 export const plantType = {
     wheat: {
+        isBlocked: false,
+        growTime: 3000,
+        howThirsty: 3,
         seed: '🫘',
         seedling: '🌱',
         ready: '🌾',
-        sellPrice: 1
+        sellPrice: 1,
     },
     corn: {
+        isBlocked: true,
+        growTime: 3000,
+        howThirsty: 3,
         seed:'🫘',
         seedling:'🌿',
         ready:'🌽',
         sellPrice: 2,
     },
     carrots: {
+        isBlocked: true,
+        growTime: 3000,
+        howThirsty: 3,
         seed:'𓇢',
         seedling:'🌱',
         ready:'🥕',
         sellPrice: 2,
     },
     onion: {
+        isBlocked: true,
+        growTime: 3000,
+        howThirsty: 3,
         seed:'𓇢',
         seedling:'🍀',
         ready:'🧅',

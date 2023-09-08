@@ -6,17 +6,13 @@ import { plantType } from './enums/plantEnums';
 export class SoilBlock {
   constructor(plant, x, y, parentLine) {
     this.plant = plant; //plant type
-    this.soilAct = soilStages.empty; //
     this.positionX = x;
     this.positionY = y;
-    this.width = "5vw";
-    this.height = "5vw";
     this.soilClass = ["soil"];
-    this.color = "#cd853f";
-    this.isGrowing = false;
+    this.seedPlanted = plantType.wheat;
+    this.soilAct = soilStages.empty; //
     this.counter = 0;
-    this.seedType = plantType.wheat;
-
+    this.isGrowing = false;
     this.soil = createEl(
       "div",
       "soil",
@@ -46,7 +42,7 @@ export class SoilBlock {
           Player.playerAct === soilRequests.plow
         ) {
           this.updateSoil(
-            this.soil,
+            this,
             soilStages.plowed,
             "poop-me",
             actionTypes.poop
@@ -55,8 +51,10 @@ export class SoilBlock {
           this.soilAct === soilStages.plowed &&
           Player.playerAct === soilRequests.poop
         ) {
+          //get seedPlanted.seed
+          console.log(this.seedPlanted);
           this.updateSoil(
-            this.soil,
+            this,
             soilStages.pooped,
             "seed-me",
             actionTypes.seed
@@ -67,10 +65,10 @@ export class SoilBlock {
         ) {
           //check this.plantType.seed selected
           // update this.seedtype to seed selected
-          // 
+          // console.log(this.seedPlanted.seedling);
           this.updateSoil(
-            this.soil,
-            soilStages.seeded,
+            this,
+            this.seedPlanted.seed,
             "water-me",
             actionTypes.h2o
           );
@@ -78,42 +76,38 @@ export class SoilBlock {
           this.soilAct === soilStages.seeded &&
           Player.playerAct === soilRequests.h2o
         ) {
-          const plantTime = 2000;
-          const howManyTimesToAskForH2o = 2;
           if (!this.isGrowing) {
             this.soil.removeChild(this.soil.lastChild);
             this.isGrowing = true;
             setTimeout(
               this.growPlant,
-              plantTime,
+              this.seedPlanted.growTime,
               this,
-              howManyTimesToAskForH2o,
-              soilStages.seedling,
+              this.seedPlanted.howThirsty,
+              this.seedPlanted.seedling,
               actionTypes.h2o
             );
           }
-          if (this.counter === howManyTimesToAskForH2o) {
+          if (this.counter === this.seedPlanted.howThirsty) {
             this.updateSoilAct(soilStages.seedling);
           }
         } else if (
           this.soilAct === soilStages.seedling &&
           Player.playerAct === soilRequests.h2o
         ) {
-          const plantTime = 3000;
-          const howManyTimesToAskForH2o = 2;
           if (!this.isGrowing) {
             this.soil.removeChild(this.soil.lastChild);
             this.isGrowing = true;
             setTimeout(
               this.growPlant,
-              plantTime,
+              this.seedPlanted.growTime,
               this,
-              howManyTimesToAskForH2o,
-              soilStages.ready,
+              this.seedPlanted.howThirsty,
+              this.seedPlanted.ready,
               actionTypes.pick
             );
           }
-          if (this.counter === howManyTimesToAskForH2o) {
+          if (this.counter === this.seedPlanted.howThirsty) {
             this.updateSoilAct(soilStages.ready);
           }
         } else if (
@@ -121,7 +115,7 @@ export class SoilBlock {
           Player.playerAct === soilRequests.pick
         ) {
           this.updateSoil(
-            this.soil,
+            this,
             soilStages.empty,
             "plow-me",
             actionTypes.plow
@@ -133,9 +127,13 @@ export class SoilBlock {
     });
   }
 
+  updateSeedPlanted(newSeed) {
+    this.seedPlanted = newSeed;
+  }
+
   updateSoil(parent, nextSoilAction, newDivClass, nextAction) {
-    action(parent, nextSoilAction);
-    createEl("div", ["req", newDivClass], nextAction, nextAction, parent);
+    action(parent.soil, nextSoilAction);
+    createEl("div", ["req", newDivClass], nextAction, nextAction, parent.soil);
     this.updateSoilAct(nextSoilAction);
   }
 
