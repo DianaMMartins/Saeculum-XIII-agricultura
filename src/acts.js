@@ -1,7 +1,6 @@
 import { ActionButton } from "./actionBtn";
 import { actionTypes } from "./enums/enum";
-import { player } from './player';
-
+import { player } from "./player";
 
 export function createEl(type, newClass, newId, newText, parent) {
   const el = document.createElement(type);
@@ -10,7 +9,7 @@ export function createEl(type, newClass, newId, newText, parent) {
   } else {
     el.classList.add(newClass);
   }
-  if (newId !== '') {
+  if (newId !== "") {
     el.setAttribute("id", newId);
   }
   el.innerText = newText;
@@ -19,11 +18,23 @@ export function createEl(type, newClass, newId, newText, parent) {
 }
 
 export function createNestedDivEl(parent, infoToDisplayInP, newClass) {
-  const newDiv = Object.entries(infoToDisplayInP).forEach(value => {
-    const parentDiv = createEl('div', 'p-parent', '', '', parent); 
+  const newDiv = Object.entries(infoToDisplayInP).forEach((value) => {
+    const parentDiv = createEl("div", "p-parent", "", "", parent);
     const pText = Array.from(value[1]);
-    const oneP = createEl('p', newClass, value[0] + '-symbol', pText[0], parentDiv);
-    createEl('p', newClass, value[0] + '-value', pText.slice(1).join(''), parentDiv);
+    const oneP = createEl(
+      "p",
+      newClass,
+      value[0] + "-symbol",
+      pText[0],
+      parentDiv
+    );
+    createEl(
+      "p",
+      newClass,
+      value[0] + "-value",
+      pText.slice(1).join(""),
+      parentDiv
+    );
   });
 }
 
@@ -53,6 +64,14 @@ export function updateCursor(emoji) {
 
 export function sellProduce(sellPrice) {
   player.cash += sellPrice;
-  const currentCash = document.getElementById('cash-value');
+  const currentCash = document.getElementById("cash-value");
   currentCash.innerText = parseInt(currentCash.innerText) + sellPrice;
+}
+
+export function pickDroppedSeeds(seedType) {
+  Object.entries(player.stock).forEach((seedStock) => {
+    if (seedStock[0].includes(seedType.cropName)) {
+      player.stock[seedStock[0]] =  seedStock[1] + seedType.droppedSeeds;
+    }
+  });
 }

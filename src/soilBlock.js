@@ -1,4 +1,4 @@
-import { createEl, action, sellProduce } from "./acts";
+import { createEl, action, sellProduce, pickDroppedSeeds } from "./acts";
 import { actionTypes, soilRequests, soilStages } from "./enums/enum";
 import { player } from "./player";
 
@@ -101,8 +101,9 @@ export class SoilBlock {
         ) {
           this.updateSoil(this, soilStages.empty, "plow-me", actionTypes.plow);
           sellProduce(this.seedPlanted.sellPrice);
-          //updatePlayer coins
-          console.log(player.cash);
+          //updatePlayer player stock with plant seed drops
+          pickDroppedSeeds(this.seedPlanted)
+          // console.log(player.stock, this.seedPlanted.cropName);
         }
       }
     });
