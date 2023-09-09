@@ -1,4 +1,3 @@
-import { ActionButton } from "./actionBtn";
 import { actionTypes } from "./enums/enum";
 import { player } from "./player";
 
@@ -48,7 +47,6 @@ export function action(needsAction, nextAction) {
 export function updateSeedBtn(selectedCrop) {
   const parent = document.getElementById("seed-btn");
   parent.innerText = selectedCrop.ready;
-  console.log(selectedCrop.ready, "updateseedbtn");
   updateCursor(actionTypes.seed);
 }
 
@@ -60,7 +58,6 @@ export function updateCursor(emoji) {
     emoji +
     `🧑‍🌾</text></svg>") 16 0, auto`;
   parent.style.cursor = newCursor;
-  taxesTimer();
 }
 
 export function sellProduce(sellPrice) {
@@ -77,20 +74,31 @@ export function pickDroppedSeeds(seedType) {
   });
 }
 
-export function payTaxes(playerMoney) {
-  //could possibly just do a setTimeout(function, 6000)
-  //call taxesTimer() everytime the parseInt(new Date().getSeconds()) is 00
-  //taxes are based on player money
-  // after x amount of time the player gets taxed 23% of it's money
-  //if not enough money player gets killed
-}
+// export function payTaxes(playerMoney) {
+//could possibly just do a setTimeout(function, 6000)
+//call taxesTimer() everytime the parseInt(new Date().getSeconds()) is 00
+//taxes are based on player money
+// after x amount of time the player gets taxed 23% of it's money
+//if not enough money player gets killed
+// }
 
 export function taxesTimerCountdown() {
   let seconds = 60;
   function tickTock() {
-    //getCounter div //need to create outside
+    const timer = document.getElementById("timer-value");
     seconds--;
-    //change the text of the getCounterdiv to display new seconds 
+    timer.innerText = "0:" + (seconds < 10 ? "0" : "") + String(seconds);
+    if (seconds > 0) {
+      setTimeout(tickTock, 1000);
+      if (seconds < 11) {
+        timer.style.color = "red";
+      }
+    } else {
+      seconds = 60;
+      timer.style.color = "black";
+      taxesTimerCountdown();
+      //payTaxes()
+    }
   }
-  setTimeout(tickTock, 1000);
+  tickTock();
 }
