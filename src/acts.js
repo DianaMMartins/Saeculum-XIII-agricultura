@@ -60,6 +60,7 @@ export function updateCursor(emoji) {
     emoji +
     `🧑‍🌾</text></svg>") 16 0, auto`;
   parent.style.cursor = newCursor;
+  taxesTimer();
 }
 
 export function sellProduce(sellPrice) {
@@ -71,7 +72,25 @@ export function sellProduce(sellPrice) {
 export function pickDroppedSeeds(seedType) {
   Object.entries(player.stock).forEach((seedStock) => {
     if (seedStock[0].includes(seedType.cropName)) {
-      player.stock[seedStock[0]] =  seedStock[1] + seedType.droppedSeeds;
+      player.stock[seedStock[0]] = seedStock[1] + seedType.droppedSeeds;
     }
   });
+}
+
+export function payTaxes(playerMoney) {
+  //could possibly just do a setTimeout(function, 6000)
+  //call taxesTimer() everytime the parseInt(new Date().getSeconds()) is 00
+  //taxes are based on player money
+  // after x amount of time the player gets taxed 23% of it's money
+  //if not enough money player gets killed
+}
+
+export function taxesTimerCountdown() {
+  let seconds = 60;
+  function tickTock() {
+    //getCounter div //need to create outside
+    seconds--;
+    //change the text of the getCounterdiv to display new seconds 
+  }
+  setTimeout(tickTock, 1000);
 }
