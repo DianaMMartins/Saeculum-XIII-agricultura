@@ -10,11 +10,21 @@ export function createEl(type, newClass, newId, newText, parent) {
   } else {
     el.classList.add(newClass);
   }
-  el.setAttribute("id", newId);
+  if (newId !== '') {
+    el.setAttribute("id", newId);
+  }
   el.innerText = newText;
-
   parent.appendChild(el);
   return el;
+}
+
+export function createNestedDivEl(parent, infoToDisplayInP, newClass) {
+  const newDiv = Object.entries(infoToDisplayInP).forEach(value => {
+    const parentDiv = createEl('div', 'p-parent', '', '', parent); 
+    const pText = Array.from(value[1]);
+    const oneP = createEl('p', newClass, value[0], pText[0], parentDiv);
+    createEl('p', newClass, value[0], pText.slice(1).join(''), parentDiv);
+  });
 }
 
 export function action(needsAction, nextAction) {

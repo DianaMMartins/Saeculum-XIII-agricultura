@@ -1,13 +1,13 @@
 import { ActionButton } from "./actionBtn";
 import { SoilBlock } from "./soilBlock";
 import { actionTypes, soilStages } from "./enums/enum";
-import { createEl } from "./acts";
+import { createEl, createNestedDivEl } from "./acts";
 import { plantType } from "./enums/plantEnums";
 import { SeedSelectionBtn } from "./seedSelectionBtn";
+import { player } from "./player";
 
 let mainDiv = document.getElementById("page");
 const soilArray = [];
-const coin = "🪙";
 
 function createElBoard(x, y) {
   const soilBoard = document.createElement("div");
@@ -42,10 +42,26 @@ function createPlantSelection(seedSelection) {
   );
 }
 
+function createPlayerInfo(playerInfo) {
+  const playerInfoBar = createEl("div", "player-info", "", "", mainDiv);
+  playerInfo.cash
+    // const cash = '🪙' +  playerInfo.cash;
+    // const tithe = '👑' + 23; //10% of your income + 10% to the king
+    // const timer = '⏳';
+    // const timerEnd = '⌛';
+    const infoToDisplay = {
+      cash: '🪙' +  playerInfo.cash,
+      tithe: '👑' + 23, // needs to be a tax function
+      timer: '⏳' + 10, //needs to be a timer function
+    }
+createNestedDivEl(playerInfoBar, infoToDisplay, 'p-divs')
+}
+
 function startGame() {
   createElBoard(12, 8);
   createActionBar(actionTypes);
   createPlantSelection(plantType);
+  createPlayerInfo(player);
 }
 
 startGame();
