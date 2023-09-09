@@ -5,5 +5,10 @@ export const player = {
   playerAct: actionTypes.plow,
   seedType: plantType.wheat,
   cash: 0,
-  stock: [],
+  stock: {
+    wheatSeeds: 1,
+    cornSeeds: 0,
+    carrotSeeds: 0,
+    onionSeeds: 0,
+  },
 };
