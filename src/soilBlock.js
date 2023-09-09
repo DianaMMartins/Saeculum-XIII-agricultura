@@ -101,6 +101,7 @@ export class SoilBlock {
         ) {
           this.updateSoil(this, soilStages.empty, "plow-me", actionTypes.plow);
           sellProduce(this.seedPlanted.sellPrice);
+          //updatePlayer coins
           console.log(player.cash);
         }
       }

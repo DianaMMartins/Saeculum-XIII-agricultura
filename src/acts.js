@@ -22,8 +22,8 @@ export function createNestedDivEl(parent, infoToDisplayInP, newClass) {
   const newDiv = Object.entries(infoToDisplayInP).forEach(value => {
     const parentDiv = createEl('div', 'p-parent', '', '', parent); 
     const pText = Array.from(value[1]);
-    const oneP = createEl('p', newClass, value[0], pText[0], parentDiv);
-    createEl('p', newClass, value[0], pText.slice(1).join(''), parentDiv);
+    const oneP = createEl('p', newClass, value[0] + '-symbol', pText[0], parentDiv);
+    createEl('p', newClass, value[0] + '-value', pText.slice(1).join(''), parentDiv);
   });
 }
 
@@ -53,4 +53,6 @@ export function updateCursor(emoji) {
 
 export function sellProduce(sellPrice) {
   player.cash += sellPrice;
+  const currentCash = document.getElementById('cash-value');
+  currentCash.innerText = parseInt(currentCash.innerText) + sellPrice;
 }
