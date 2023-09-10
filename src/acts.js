@@ -91,7 +91,7 @@ export function payTaxes() {
 }
 
 export function taxesTimerCountdown() {
-  let seconds = 4;
+  let seconds = 60;
   function tickTock() {
     const timer = document.getElementById("timer-value");
     seconds--;
