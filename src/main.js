@@ -1,11 +1,10 @@
 import { ActionButton } from "./actionBtn";
 import { SoilBlock } from "./soilBlock";
 import { actionTypes, soilStages } from "./enums/enum";
-import { createEl, createNestedDivEl, taxesTimerCountdown } from "./acts";
+import { createEl, createNestedDivEl, taxesTimerCountdown, createOverlay } from "./acts";
 import { plantType } from "./enums/plantEnums";
 import { SeedSelectionBtn } from "./seedSelectionBtn";
-import { player } from "./player";
-import { createOverlay } from "./utils/utils";
+import { player } from "./player"; 
 import { gameMenu, tutorial } from "./enums/overlayEnum";
 
 export const mainDiv = document.getElementById("page");

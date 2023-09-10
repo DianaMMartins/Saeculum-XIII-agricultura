@@ -2,9 +2,6 @@ import { actionTypes } from "./enums/enum";
 import { gameOver } from "./enums/overlayEnum";
 import { player } from "./player";
 import { mainDiv } from "./main";
-import { createOverlay } from "./utils/utils";
-import { createEl } from "../acts";
-
 
 export function createEl(type, newClass, newId, newText, parent) {
   const el = document.createElement(type);
