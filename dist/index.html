@@ -8,6 +8,7 @@
       :root {
         --charcoal: #282518;
         --choc-one: #623b22;
+        --choc-alpha: #623a228e;
         --cream: #f4ebd0;
         --dry-leaf: #999571;
         --dry-green: #615f48;
@@ -32,23 +33,28 @@
         align-items: center;
         justify-items: center;
         margin-top: 33px;
+        background: var(--soil);
+        border-radius: 8px;
       }
       .soil-r {
         display: flex;
         flex-wrap: nowrap;
-        background: var(--soil);
         width: 100%;
         height: 100%;
         align-items: end;
         justify-content: space-evenly;
       }
       .soil {
+        color: var(--charcoal);
         position: relative;
         font-size: 44px;
-        text-align: center;
-        color: var(--charcoal);
-        padding: 4px;
-        margin: -4px;
+        width: inherit;
+        height: inherit;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* border-top: 3px inset var(--choc-alpha);
+        border-right: 3px inset var(--choc-alpha); */
       }
       .req {
         width: 33px;
@@ -57,11 +63,13 @@
         border: 1px solid var(--charcoal);
         font-size: 25px;
         position: absolute;
-        top: -25px;
-        right: -25px;
+        top: -4px;
+        right: -11px;
         z-index: 2;
         border-radius: 30px 30px 30px 0px;
-        line-height: 36px;
+        display: flex;
+        justify-content: center;
+        align-content: center;
       }
       .action-tbl {
         grid-area: 2 / 2;
@@ -72,72 +80,118 @@
         width: calc(100% / 5);
         height: 100px;
         font-size: 70px;
-        /* padding: 0 50px; */
+        border-radius: 8px;
       }
       .selection-tbl {
-        grid-area: 3 / 2;
+        grid-area: 2 / 2;
         display: flex;
         justify-content: center;
+      }
+      #seed-btn {
+        visibility: hidden;
       }
       .seed-choice-btn {
         background-color: var(--dry-leaf);
         font-size: 2.5vw;
         width: calc(100% / 20);
+        border-radius: 8px;
       }
-      /* .collect {
-              .zoom-in-zoom-out {
-                margin: 24px;
-                width: 50px;
-                height: 50px;
-                background: green;
-                animation: zoom-in-zoom-out 2s ease-out infinite;
-                border: 0mm solid yellow;
-                transition: all smooth;
-              }
-              @keyframes zoom-in-zoom-out {
-                0% {
-                  transform: scale(1, 1);
-                }
-                50% {
-                  transform: scale(1.15, 1.15);
-                  border: 5px solid yellow;
-                }
-                100% {
-                  transform: scale(1, 1);
-                }
-              }
-            } */
-
-      /* @media screen and (max-width: 785px) {
-        #page {
-          scale: 0.95;
-          transform: rotate(90deg);
-          grid-template-columns: auto 100vh auto;
-          grid-template-rows: 56vh 2vh 16vh;
-
+      .player-info {
+        position: absolute;
+        bottom: -30px;
+        display: flex;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);
+      }
+      .p-parent {
+        display: flex;
+        align-items: end;
+        width: calc(100vw / 7);
+        justify-content: space-around;
+        border: 1px solid var(--choc-alpha);
+        height: 45px;
+      }
+      .collect {
+        animation: zoom-in-zoom-out 2s ease-out infinite;
+        border: 0mm solid yellow;
+        transition: all smooth;
+      }
+      @keyframes zoom-in-zoom-out {
+        0% {
+          transform: scale(1, 1);
         }
-        .plant-choice {
-          font-size: 3.5vh;
-          padding: 0 4px;
+        50% {
+          transform: scale(1.05, 1.05);
+          text-shadow: #fc0 1px 0 10px;
         }
-      } */
-
-      /* @media only screen and (max-width: 680px) {
+        100% {
+          transform: scale(1, 1);
+        }
+      }
+      @media only screen and (max-width: 666px) {
         body {
-          align-content: start; 
+          align-content: start;
           margin: 0;
+          overflow: hidden;
         }
         #page {
-          scale: 0.8;
-          transform: rotate(90deg);
-          grid-template-columns: auto 100vh auto;
-          grid-template-rows: 56vh 2vh 16vh;
+          margin-top: 0;
+          grid-template-columns: 0 100vw 0;
+          grid-template-rows: 80vh auto auto;
         }
-        .plant-choice {
-          font-size: 2.5vh;
-          padding: 0 4px;
+        .soil-tbl {
+          border-radius: 0;
+          margin-top: 0;
         }
-      } */
+        .soil-r {
+          height: calc(80vh / 9);
+        }
+        .soil {
+          font-size: 4vh;
+        }
+        .req {
+          width: 25px;
+          height: 25px;
+          right: -17px;
+          font-size: 18px;
+          left: 30px;
+        }
+        #seed-btn {
+          display: none;
+        }
+        .action-tbl {
+          width: 100%;
+        }
+        .selection-tbl {
+          grid-area: 3 / 2;
+        }
+        .action-tbl button {
+          height: 70px;
+          font-size: 6.5vh;
+          width: inherit;
+        }
+        .seed-choice-btn {
+          font-size: 10vw;
+          width: calc(100% / 4);
+          height: 7vh;
+        }
+        .p-parent {
+          width: calc(100vw / 3);
+          height: 42px;
+        }
+      }
+      @media only screen and (max-width: 375px) {
+        #page {
+          margin-top: 0;
+          grid-template-columns: 0 100vw 0;
+          grid-template-rows: auto auto auto;
+        }
+        .action-tbl button {
+          /* font-size: 5vh; */
+          /* height: 65px; */
+        }
+      }
     </style>
   </head>
   <body>

@@ -94,6 +94,7 @@ export class SoilBlock {
           }
           if (this.counter === this.seedPlanted.howThirsty) {
             this.updateSoilAct(this.seedPlanted.ready);
+            this.soil.classList.add('collect');
           }
         } else if (
           this.soilAct === this.seedPlanted.ready &&

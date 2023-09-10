@@ -8,6 +8,7 @@ import { player } from "./player";
 
 let mainDiv = document.getElementById("page");
 const soilArray = [];
+const screenWidth = window.screen.width;
 
 function createElBoard(x, y) {
   const soilBoard = document.createElement("div");
@@ -54,7 +55,17 @@ function createPlayerInfo(playerInfo) {
 }
 
 function startGame() {
-  createElBoard(12, 8);
+  if (screenWidth > 1200) {
+    createElBoard(16, 8);
+  } else if (screenWidth > 768 && screenWidth < 1200) {
+    createElBoard(12, 8);
+  } else if (screenWidth > 600 && screenWidth < 768) {
+    createElBoard(10, 9);
+  } else if (screenWidth > 375 && screenWidth < 600) {
+    createElBoard(8, 9);
+  } else {
+    createElBoard(7, 9);
+  }
   createActionBar(actionTypes);
   createPlantSelection(plantType);
   createPlayerInfo(player);
