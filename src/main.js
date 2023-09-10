@@ -5,8 +5,10 @@ import { createEl, createNestedDivEl, taxesTimerCountdown } from "./acts";
 import { plantType } from "./enums/plantEnums";
 import { SeedSelectionBtn } from "./seedSelectionBtn";
 import { player } from "./player";
+import { createOverlay } from "./utils/utils";
+import { gameMenu, tutorial } from "./enums/overlayEnum";
 
-let mainDiv = document.getElementById("page");
+export const mainDiv = document.getElementById("page");
 const soilArray = [];
 const screenWidth = window.screen.width;
 
@@ -54,7 +56,25 @@ function createPlayerInfo(playerInfo) {
   createNestedDivEl(playerInfoBar, infoToDisplay, "p-divs");
 }
 
-function startGame() {
+createOverlay(gameMenu, mainDiv);
+
+const newGame = document.getElementsByClassName("overlay")[0];
+
+newGame.addEventListener("click", () => {
+  mainDiv.removeChild(newGame);
+  createOverlay(tutorial, mainDiv);
+  createMenu();
+});
+
+function createMenu() {
+  const gameTutorial = document.getElementById('game-tutorial');
+  gameTutorial.addEventListener("click", () => {
+    mainDiv.removeChild(gameTutorial);
+    startGame();
+  });
+}
+
+export function startGame() {
   if (screenWidth > 1200) {
     createElBoard(16, 8);
   } else if (screenWidth > 768 && screenWidth < 1200) {
@@ -71,5 +91,3 @@ function startGame() {
   createPlayerInfo(player);
   taxesTimerCountdown();
 }
-
-startGame();

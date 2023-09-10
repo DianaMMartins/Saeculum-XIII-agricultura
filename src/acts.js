@@ -1,11 +1,17 @@
 import { actionTypes } from "./enums/enum";
+import { gameOver } from "./enums/overlayEnum";
 import { player } from "./player";
+import { mainDiv } from "./main";
+import { createOverlay } from "./utils/utils";
+import { createEl } from "../acts";
+
 
 export function createEl(type, newClass, newId, newText, parent) {
   const el = document.createElement(type);
+
   if (Array.isArray(newClass)) {
     el.classList.add(...newClass);
-  } else {
+  } else if (newClass !== '') {
     el.classList.add(newClass);
   }
   if (newId !== "") {
@@ -64,7 +70,7 @@ export function sellProduce(sellPrice) {
   player.cash += sellPrice;
   const newText = parseInt(player.cash);
   console.log(newText, player.cash);
-  updatePlayerInfoBar('cash-value', newText);
+  updatePlayerInfoBar("cash-value", newText);
 }
 
 export function pickDroppedSeeds(seedType) {
@@ -82,13 +88,13 @@ export function updatePlayerInfoBar(elementToUpdate, textToUpdate) {
 export function payTaxes() {
   const taxPercentage = 0.23;
   const taxableIncome = player.cash;
-  let afterTax = Math.floor(taxableIncome - (taxableIncome * taxPercentage));
+  let afterTax = Math.floor(taxableIncome - taxableIncome * taxPercentage);
   player.cash = afterTax;
-  updatePlayerInfoBar('cash-value', afterTax);
+  updatePlayerInfoBar("cash-value", afterTax);
 }
 
 export function taxesTimerCountdown() {
-  let seconds = 60;
+  let seconds = 4;
   function tickTock() {
     const timer = document.getElementById("timer-value");
     seconds--;
@@ -100,14 +106,35 @@ export function taxesTimerCountdown() {
       }
     } else {
       if (player.cash === 0) {
-        alert('you died!')
+        createOverlay(gameOver, mainDiv);
+        //create a clear board function
+        const newGame = document.getElementsByClassName("overlay")[0];
+        newGame.addEventListener("click", (e) => {
+          mainDiv.removeChild(newGame);
+          window.location.reload();
+        });
       } else {
         seconds = 60;
         timer.style.color = "black";
         taxesTimerCountdown();
-        payTaxes()
+        payTaxes();
       }
     }
   }
   tickTock();
+}
+
+export function createOverlay(overlayType, parent) {
+    const overlayDiv = createEl('div', 'overlay', overlayType.class, '', parent);
+    Object.entries(overlayType).forEach(key => {
+        if (key[0] !== 'class'){
+            if (Array.isArray(key[1])) {
+                key[1].forEach(pTag => {
+                    createEl('p', 'game-text', '', pTag, overlayDiv)
+                })
+            } else {
+                createEl(key[0], '', '', key[1], overlayDiv);
+            }
+        }
+    })
 }

@@ -10,6 +10,7 @@
         --choc-one: #623b22;
         --choc-alpha: #623a228e;
         --cream: #f4ebd0;
+        --cream-over: #f4ebd0;
         --dry-leaf: #999571;
         --dry-green: #615f48;
         --green: #7c832d;
@@ -26,6 +27,72 @@
         display: grid;
         grid-template-rows: 70vh 100px 1fr;
         grid-template-columns: 12.5vw 75vw 12.5vw;
+      }
+      .overlay {
+        font-family: fantasy, cursive;
+        /* background: linear-gradient(
+          0deg,
+          rgba(77, 34, 12, 1) 0%,
+          rgba(72, 32, 98, 1) 30%,
+          rgba(5, 41, 64, 1) 72%,
+          rgba(0, 15, 45, 1) 100%
+        ); */
+        color: var(--dry-green);
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: var(--choc-one);
+        z-index: 3;
+        text-align: center;
+      }
+      .overlay h1 {
+        font-size: 7vw;
+        padding: 0;
+        background: var(--cream-over);
+        z-index: 3;
+        margin: 0;
+      }
+      .overlay h2 {
+        font-size: 4vw;
+        margin-bottom: 40px;
+        z-index: 3;
+      }
+      .overlay p {
+        font-size: 3vw;
+        margin-top: 0;
+        z-index: 4;
+      }
+      .overlay h3 {
+        font-size: 3.5vw;
+        margin-top: 0;
+        margin-bottom: 0;
+        z-index: 3;
+      }
+      #game-tutorial {
+        z-index: 4;
+      }
+      #game-tutorial h1 {
+        height: auto;
+        font-size: 6vw;
+        position: relative;
+        padding: 0;
+        margin-bottom: 0;
+        z-index: 4;
+      }
+      #game-tutorial h2 {
+        padding: auto;
+        margin: 45px 0;
+        font-size: 2.5vw;
+        z-index: 4;
+      }
+      #game-tutorial p {
+        padding: 10px;
+        margin: 0;
+        font-size: 1.5vw;
+        z-index: 4;
       }
       .soil-tbl {
         grid-area: 1 / 2;
@@ -163,6 +230,27 @@
           grid-template-columns: 0 100vw 0;
           grid-template-rows: 80vh auto auto;
         }
+        .overlay {
+          justify-content: center;
+        }
+        .overlay h1 {
+          font-size: 10vw;
+          position: relative;
+          text-align: center;
+          height: auto;
+          padding: 0;
+          margin-top: 0;
+        }
+        .overlay h2 {
+          font-size: 5vw;
+          margin: 0;
+          padding: 0;
+          z-index: 3;
+        }
+        .overlay p {
+          margin-top: 20px;
+          font-size: 4vw;
+        }
         .soil-tbl {
           border-radius: 0;
           margin-top: 0;
@@ -210,9 +298,19 @@
           grid-template-columns: 0 100vw 0;
           grid-template-rows: auto auto auto;
         }
-        .action-tbl button {
-          /* font-size: 5vh; */
-          /* height: 65px; */
+        .overlay {
+          margin: 0 30px;
+          max-width: 84vw;
+          text-align: center;
+        }
+        .overlay h1 {
+          font-size: 13vw;
+        }
+        .overlay h2 {
+          font-size: 7vw;
+        }
+        .overlay p {
+          font-size: 6vw;
         }
       }
     </style>
