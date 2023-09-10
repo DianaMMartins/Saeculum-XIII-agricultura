@@ -62,8 +62,9 @@ export function updateCursor(emoji) {
 
 export function sellProduce(sellPrice) {
   player.cash += sellPrice;
-  const currentCash = document.getElementById("cash-value");
-  currentCash.innerText = parseInt(currentCash.innerText) + sellPrice;
+  const newText = parseInt(player.cash);
+  console.log(newText, player.cash);
+  updatePlayerInfoBar('cash-value', newText);
 }
 
 export function pickDroppedSeeds(seedType) {
@@ -74,13 +75,17 @@ export function pickDroppedSeeds(seedType) {
   });
 }
 
-// export function payTaxes(playerMoney) {
-//could possibly just do a setTimeout(function, 6000)
-//call taxesTimer() everytime the parseInt(new Date().getSeconds()) is 00
-//taxes are based on player money
-// after x amount of time the player gets taxed 23% of it's money
-//if not enough money player gets killed
-// }
+export function updatePlayerInfoBar(elementToUpdate, textToUpdate) {
+  document.getElementById(elementToUpdate).innerText = textToUpdate;
+}
+
+export function payTaxes() {
+  const taxPercentage = 0.23;
+  const taxableIncome = player.cash;
+  let afterTax = Math.floor(taxableIncome - (taxableIncome * taxPercentage));
+  player.cash = afterTax;
+  updatePlayerInfoBar('cash-value', afterTax);
+}
 
 export function taxesTimerCountdown() {
   let seconds = 60;
@@ -94,10 +99,14 @@ export function taxesTimerCountdown() {
         timer.style.color = "red";
       }
     } else {
-      seconds = 60;
-      timer.style.color = "black";
-      taxesTimerCountdown();
-      //payTaxes()
+      if (player.cash === 0) {
+        alert('you died!')
+      } else {
+        seconds = 60;
+        timer.style.color = "black";
+        taxesTimerCountdown();
+        payTaxes()
+      }
     }
   }
   tickTock();
