@@ -64,6 +64,7 @@ export class SoilBlock {
           if (!this.isGrowing) {
             this.soil.removeChild(this.soil.lastChild);
             this.isGrowing = true;
+            this.soil.classList.add('watered');
             setTimeout(
               this.growPlant,
               this.seedPlanted.growTime,
@@ -81,6 +82,7 @@ export class SoilBlock {
           player.playerAct === soilRequests.h2o
         ) {
           if (!this.isGrowing) {
+            this.soil.classList.add('watered');
             this.soil.removeChild(this.soil.lastChild);
             this.isGrowing = true;
             setTimeout(
@@ -123,6 +125,7 @@ export class SoilBlock {
   }
 
   growPlant(parent, nRounds, nextSoilStage, nextAction) {
+    parent.soil.classList.remove('watered');
     if (parent.counter < nRounds) {
       createEl(
         "div",

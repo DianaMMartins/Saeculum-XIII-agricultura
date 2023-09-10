@@ -14,6 +14,7 @@
         --dry-green: #615f48;
         --green: #7c832d;
         --soil: #b68d40;
+        --wet-soil: #7055239a;
       }
       body {
         background: var(--cream);
@@ -53,8 +54,24 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        /* border-top: 3px inset var(--choc-alpha);
-        border-right: 3px inset var(--choc-alpha); */
+      }
+      .watered {
+        animation: watered 2s ease-in-out;
+      }
+      @keyframes watered {
+        0%,
+        100% {
+          /* background: transparent; */
+          text-shadow: 0 0 0 transparent;
+          border-radius: 150px;
+        }
+        50% {
+          /* background: var(--wet-soil); */
+          border-radius: 50px;
+          text-shadow: 5px 5px 42px rgba(67, 46, 6, 0.94),
+            2px 4px 25px rgba(67, 46, 6, 0.94),
+            0px 0px 10px rgba(67, 46, 6, 0.94);
+        }
       }
       .req {
         width: 33px;
@@ -87,8 +104,12 @@
         display: flex;
         justify-content: center;
       }
+      .act {
+        z-index: 3;
+      }
       #seed-btn {
         visibility: hidden;
+        z-index: 0;
       }
       .seed-choice-btn {
         background-color: var(--dry-leaf);
@@ -109,8 +130,12 @@
         align-items: end;
         width: calc(100vw / 7);
         justify-content: space-around;
-        border: 1px solid var(--choc-alpha);
-        height: 45px;
+        border: 3px solid var(--choc-alpha);
+        /* height: 45px; */
+      }
+      .p-parent p {
+        font-size: 4vh;
+        margin: 0;
       }
       .collect {
         animation: zoom-in-zoom-out 2s ease-out infinite;
@@ -118,15 +143,13 @@
         transition: all smooth;
       }
       @keyframes zoom-in-zoom-out {
-        0% {
+        0%,
+        100% {
           transform: scale(1, 1);
         }
         50% {
           transform: scale(1.05, 1.05);
           text-shadow: #fc0 1px 0 10px;
-        }
-        100% {
-          transform: scale(1, 1);
         }
       }
       @media only screen and (max-width: 666px) {
