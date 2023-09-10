@@ -94,7 +94,6 @@ export class SoilBlock {
           }
           if (this.counter === this.seedPlanted.howThirsty) {
             this.updateSoilAct(this.seedPlanted.ready);
-            this.soil.classList.add('collect');
           }
         } else if (
           this.soilAct === this.seedPlanted.ready &&
@@ -102,9 +101,8 @@ export class SoilBlock {
         ) {
           this.updateSoil(this, soilStages.empty, "plow-me", actionTypes.plow);
           sellProduce(this.seedPlanted.sellPrice);
-          //updatePlayer player stock with plant seed drops
           pickDroppedSeeds(this.seedPlanted)
-          // console.log(player.stock, this.seedPlanted.cropName);
+          this.soil.classList.remove('collect');
         }
       }
     });
@@ -138,6 +136,9 @@ export class SoilBlock {
       action(parent.soil, nextSoilStage);
       createEl("div", ["req", "water-me"], nextAction, nextAction, parent.soil);
       parent.counter = 0;
+    }
+    if (parent.seedPlanted.ready === parent.soilAct) {
+      parent.soil.classList.add('collect');
     }
     parent.isGrowing = false;
   }
