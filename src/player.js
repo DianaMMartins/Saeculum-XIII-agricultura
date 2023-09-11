@@ -11,4 +11,5 @@ export const player = {
     carrotSeeds: 0,
     onionSeeds: 0,
   },
+  goal: 100,
 };

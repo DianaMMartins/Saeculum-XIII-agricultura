@@ -1,10 +1,15 @@
 import { ActionButton } from "./actionBtn";
 import { SoilBlock } from "./soilBlock";
 import { actionTypes, soilStages } from "./enums/enum";
-import { createEl, createNestedDivEl, taxesTimerCountdown, createOverlay } from "./acts";
+import {
+  createEl,
+  createNestedDivEl,
+  taxesTimerCountdown,
+  createOverlay, buyYourLand
+} from "./acts";
 import { plantType } from "./enums/plantEnums";
 import { SeedSelectionBtn } from "./seedSelectionBtn";
-import { player } from "./player"; 
+import { player } from "./player";
 import { gameMenu, tutorial } from "./enums/overlayEnum";
 
 export const mainDiv = document.getElementById("page");
@@ -49,10 +54,24 @@ function createPlayerInfo(playerInfo) {
   playerInfo.cash;
   const infoToDisplay = {
     cash: "🪙" + playerInfo.cash,
-    tithe: "👑" + 23, // needs to be a tax function
+    tithe: "👑" + 23 + "%", // needs to be a tax function
     timer: "⏳" + 60, //needs to be a timer function taxesTimerCountdown
   };
   createNestedDivEl(playerInfoBar, infoToDisplay, "p-divs");
+}
+
+function createBuyLandButton() {
+  const buyLand = "🪙 " + player.goal;
+  const parent = document.getElementsByClassName('player-info')[0];
+  const buttonToBuy = createEl(
+    "button",
+    "buy-land",
+    "",
+    "buy your land!",
+    parent
+  );
+  createEl("p", "", "", buyLand, buttonToBuy);
+  buyYourLand(buttonToBuy);
 }
 
 createOverlay(gameMenu, mainDiv);
@@ -66,7 +85,7 @@ newGame.addEventListener("click", () => {
 });
 
 function createMenu() {
-  const gameTutorial = document.getElementById('game-tutorial');
+  const gameTutorial = document.getElementById("game-tutorial");
   gameTutorial.addEventListener("click", () => {
     mainDiv.removeChild(gameTutorial);
     startGame();
@@ -89,4 +108,5 @@ export function startGame() {
   createPlantSelection(plantType);
   createPlayerInfo(player);
   taxesTimerCountdown();
+  createBuyLandButton();
 }

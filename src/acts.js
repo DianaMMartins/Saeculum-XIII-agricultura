@@ -1,5 +1,5 @@
 import { actionTypes } from "./enums/enum";
-import { gameOver } from "./enums/overlayEnum";
+import { gameOver, youWon } from "./enums/overlayEnum";
 import { player } from "./player";
 import { mainDiv } from "./main";
 
@@ -8,7 +8,7 @@ export function createEl(type, newClass, newId, newText, parent) {
 
   if (Array.isArray(newClass)) {
     el.classList.add(...newClass);
-  } else if (newClass !== '') {
+  } else if (newClass !== "") {
     el.classList.add(newClass);
   }
   if (newId !== "") {
@@ -83,7 +83,7 @@ export function updatePlayerInfoBar(elementToUpdate, textToUpdate) {
 }
 
 export function payTaxes() {
-  const taxPercentage = 0.23;
+  const taxPercentage = 0.23; //maybe make this a random number that changes every cycle
   const taxableIncome = player.cash;
   let afterTax = Math.floor(taxableIncome - taxableIncome * taxPercentage);
   player.cash = afterTax;
@@ -105,11 +105,7 @@ export function taxesTimerCountdown() {
       if (player.cash === 0) {
         createOverlay(gameOver, mainDiv);
         //create a clear board function
-        const newGame = document.getElementsByClassName("overlay")[0];
-        newGame.addEventListener("click", (e) => {
-          mainDiv.removeChild(newGame);
-          window.location.reload();
-        });
+        startNewGame('game-over');
       } else {
         seconds = 60;
         timer.style.color = "black";
@@ -121,17 +117,37 @@ export function taxesTimerCountdown() {
   tickTock();
 }
 
+export function startNewGame(id) {
+  const newGame = document.getElementById(id);
+  newGame.addEventListener("click", () => {
+    mainDiv.innerHTML = '';
+    window.location.reload();
+  });
+}
+
 export function createOverlay(overlayType, parent) {
-    const overlayDiv = createEl('div', 'overlay', overlayType.class, '', parent);
-    Object.entries(overlayType).forEach(key => {
-        if (key[0] !== 'class'){
-            if (Array.isArray(key[1])) {
-                key[1].forEach(pTag => {
-                    createEl('p', 'game-text', '', pTag, overlayDiv)
-                })
-            } else {
-                createEl(key[0], '', '', key[1], overlayDiv);
-            }
-        }
-    })
+  const overlayDiv = createEl("div", "overlay", overlayType.class, "", parent);
+  Object.entries(overlayType).forEach((key) => {
+    if (key[0] !== "class") {
+      if (Array.isArray(key[1])) {
+        key[1].forEach((pTag) => {
+          createEl("p", "game-text", "", pTag, overlayDiv);
+        });
+      } else {
+        createEl(key[0], "", "", key[1], overlayDiv);
+      }
+    }
+  });
+}
+
+export function buyYourLand(parent) {
+  parent.addEventListener("click", () => {
+    console.log("hi", parent);
+    if (player.cash >= 100) {
+      createOverlay(youWon, mainDiv);
+      startNewGame('game-won');
+    } else {
+      alert(" You don't  have enough coins peasant");
+    }
+  });
 }

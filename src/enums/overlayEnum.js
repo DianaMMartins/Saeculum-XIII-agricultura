@@ -17,7 +17,15 @@ export const tutorial = {
 export const gameOver = {
   class: "game-over",
   h1: "TU MORTUS ES",
-  h2: "Te ad mortem suspensi sunt",
-  p: "translation: You have been hanged to death",
+  h2: "Occisi estis. Vos postulo ut tributa!",
+  p: "translation: You are killed. You need to pay taxes!",
+  h3: 'Your score: ' + player.cash,
+};
+
+export const youWon = {
+  class: "game-won",
+  h1: "Vincis!",
+  h2: "Lucratus es opes!",
+  p: "translation: You have gained wealth!",
   h3: 'Your score: ' + player.cash,
 };
