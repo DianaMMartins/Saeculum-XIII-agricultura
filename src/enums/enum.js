@@ -18,7 +18,9 @@ export const soilRequests = {
 
 // soil text
 export const soilStages = {
-  empty: "‧˚⋅", //⩩
+  empty: `<div class="dirt">
+  <div class="ground"></div>
+</div>`,
   plowed: "﹏",
   pooped: "☁",
   seeded: "🫘",

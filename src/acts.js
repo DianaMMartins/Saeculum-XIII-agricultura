@@ -13,7 +13,11 @@ export function createEl(type, newClass, newId, newText, parent) {
   if (newId !== "") {
     el.setAttribute("id", newId);
   }
-  el.innerText = newText;
+  if (newText.includes("<")) {
+    el.innerHTML = newText;
+  } else {
+    el.innerText = newText;
+  }
   parent.appendChild(el);
   return el;
 }
@@ -64,7 +68,7 @@ export function updateCursor(emoji) {
 
 export function sellProduce(sellPrice) {
   player.cash += sellPrice;
-  player.score['cash made'] += sellPrice;
+  player.score["cash made"] += sellPrice;
   const newText = parseInt(player.cash);
   updatePlayerInfoBar("cash-value", newText);
 }
@@ -104,13 +108,13 @@ export function taxesTimerCountdown() {
       if (player.cash === 0) {
         createOverlay(gameOver, mainDiv);
         createPlayerScoreboard();
-        startNewGame('game-over');
+        startNewGame("game-over");
       } else {
         seconds = 60;
         timer.style.color = "black";
         taxesTimerCountdown();
         payTaxes();
-        player.score['time spent']++;
+        player.score["time spent"]++;
       }
     }
   }
@@ -120,7 +124,7 @@ export function taxesTimerCountdown() {
 export function startNewGame(id) {
   const newGame = document.getElementById(id);
   newGame.addEventListener("click", () => {
-    mainDiv.innerHTML = '';
+    mainDiv.innerHTML = "";
     window.location.reload();
   });
 }
@@ -143,10 +147,10 @@ export function createOverlay(overlayType, parent) {
 export function buyYourLand(parent) {
   parent.addEventListener("click", () => {
     if (player.cash >= 100) {
-      player.score['land'] = 1;
+      player.score["land"] = 1;
       createOverlay(youWon, mainDiv);
       createPlayerScoreboard();
-      startNewGame('game-won');
+      startNewGame("game-won");
     } else {
       alert(" You don't have enough coins peasant");
     }
@@ -154,10 +158,10 @@ export function buyYourLand(parent) {
 }
 
 export function createPlayerScoreboard() {
-  const parent = document.getElementsByTagName('h3')[0];
+  const parent = document.getElementsByTagName("h3")[0];
   const playerScore = player.finalScore();
-  Object.entries(playerScore).forEach(score => {
-    const textToDisplay = score[0] + ': ' + score[1].toString();
-    createEl('p', 'score-data', score[0], textToDisplay, parent)
-  })
+  Object.entries(playerScore).forEach((score) => {
+    const textToDisplay = score[0] + ": " + score[1].toString();
+    createEl("p", "score-data", score[0], textToDisplay, parent);
+  });
 }

@@ -712,11 +712,59 @@
         border-radius: 46% 3% 39% 39%;
         border: 0px solid var(--charcoal);
       }
+      .dirt {
+        position: absolute;
+        top: 33px;
+        left: 60px;
+      }
+      .ground {
+        height: 0.34em;
+        width: 0.25em;
+        background: radial-gradient(
+          ellipse at top,
+          var(--dark-oat),
+          var(--choc-alpha)
+        );
+        border-radius: 30px 5px 20px 5px;
+        transform: rotate(10deg);
+      }
+      .ground::before {
+        top: -9px;
+        right: 27px;
+        content: "";
+        position: absolute;
+        height: 0.29em;
+        width: 0.6em;
+        border-radius: 38px 6px;
+        background: radial-gradient(
+          ellipse at top,
+          var(--dark-oat),
+          var(--choc-alpha)
+        );
+        transform: rotate(22deg);
+      }
+      .ground::after {
+        top: 23px;
+        right: 1px;
+        content: "";
+        position: absolute;
+        height: 0.31em;
+        width: 0.65em;
+        border-radius: 20px 0;
+        background: radial-gradient(
+          ellipse at top,
+          var(--dark-oat),
+          var(--choc-alpha)
+        );
+        transform: rotate(6deg);
+      }
     </style>
   </head>
 
   <body>
+    </div>
     <div id="page"></div>
     <script src="main.js"></script>
+
   </body>
 </html>
