@@ -39,10 +39,6 @@ export function createNestedDivEl(parent, infoToDisplayInP, newClass) {
   });
 }
 
-export function createArtDiv(art) {
-
-}
-
 export function action(needsAction, nextAction) {
   if (!needsAction.childElementCount === 0) {
     needsAction.removeChild(needsAction.lastElementChild);

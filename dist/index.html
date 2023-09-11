@@ -10,6 +10,7 @@
         --choc-one: #623b22;
         --choc-alpha: #623a228e;
         --cream: #f4ebd0;
+        --corn-y: #ead74c;
         --cream-over: #f4ebd0;
         --dry-leaf: #999571;
         --dry-green: #615f48;
@@ -17,6 +18,8 @@
         --green: #7c832d;
         --soil: #b68d40;
         --wet-soil: #7055239a;
+        --oat: #d8c29d;
+        --dark-oat: #c8b087;
       }
       body {
         background: var(--cream);
@@ -488,7 +491,6 @@
       .o-leaf::before {
         content: "";
         position: absolute;
-        display: inline-block;
         width: 8px;
         height: 45px;
         border-right: 4px solid var(--green);
@@ -500,7 +502,6 @@
       .o-leaf::after {
         content: "";
         position: absolute;
-        display: inline-block;
         width: 8px;
         height: 45px;
         border-right: 4px solid var(--green);
@@ -510,15 +511,211 @@
         top: 5px;
         scale: -1 1;
       }
+      .corn-seed {
+        position: absolute;
+        top: 6px;
+        left: 13px;
+      }
+      .seed {
+        position: absolute;
+        top: 22px;
+        left: 6px;
+        border-radius: 1px 27px 27px 32px;
+      }
+      .corn {
+        height: 0.54em;
+        width: 0.55em;
+        background: radial-gradient(
+          circle at top left,
+          #f2e692 19%,
+          var(--corn-y) 24%
+        );
+        transform: rotate(62deg);
+      }
+      .corn::after {
+        content: "";
+        position: absolute;
+        height: 0.45em;
+        width: 0.5em;
+        border-radius: 27px 2px 27px 21px;
+        background: radial-gradient(
+          circle at top right,
+          #f2e692 18%,
+          var(--corn-y) 26%
+        );
+        top: -24px;
+        right: 7px;
+        transform: rotate(-132deg);
+      }
+      .corn::before {
+        content: "";
+        position: absolute;
+        height: 0.45em;
+        width: 0.45em;
+        border-radius: 27px 2px 27px 21px;
+        background: radial-gradient(
+          circle at top right,
+          #f2e692 19%,
+          var(--corn-y) 22%
+        );
+        top: -15px;
+        right: -17px;
+        transform: rotate(132deg);
+      }
+
+      .carrot-seed {
+        position: absolute;
+        top: 3px;
+        left: 13px;
+      }
+      .carrot {
+        background: linear-gradient(
+          -44deg,
+          var(--choc-one) 45%,
+          var(--wet-soil) 50%,
+          var(--choc-one) 55%
+        );
+        height: 0.4em;
+        width: 0.4em;
+        transform: rotate(89deg);
+        border-radius: 100% 0;
+      }
+      .carrot::after {
+        content: "";
+        position: absolute;
+        background: linear-gradient(
+          -44deg,
+          var(--choc-one) 45%,
+          var(--wet-soil) 50%,
+          var(--choc-one) 55%
+        );
+        height: 0.35em;
+        width: 0.4em;
+        border-radius: 100% 0;
+        top: -21px;
+        right: -15px;
+        transform: rotate(101deg);
+      }
+      .carrot::before {
+        content: "";
+        position: absolute;
+        background: linear-gradient(
+          -36deg,
+          var(--choc-one) 45%,
+          var(--wet-soil) 50%,
+          var(--choc-one) 55%
+        );
+        height: 0.4em;
+        width: 0.4em;
+        border-radius: 100% 0;
+        top: -22px;
+        right: 11px;
+        transform: rotate(234deg);
+      }
+
+      .wheat-seed {
+        position: absolute;
+        top: 16px;
+        left: 13px;
+      }
+      .wheat {
+        background: linear-gradient(
+          -44deg,
+          var(--oat) 42%,
+          var(--dark-oat) 50%,
+          var(--oat) 58%
+        );
+        height: 0.5em;
+        width: 0.5em;
+        transform: rotate(89deg);
+        border-radius: 80% 0;
+      }
+      .wheat::before {
+        top: -15px;
+        right: 28px;
+        content: "";
+        position: absolute;
+        background: linear-gradient(
+          -46deg,
+          var(--oat) 38%,
+          var(--dark-oat) 50%,
+          var(--oat) 62%
+        );
+        height: 0.5em;
+        width: 0.5em;
+        transform: rotate(68deg);
+        border-radius: 69% 0;
+      }
+      .wheat::after {
+        top: -36px;
+        right: 5px;
+        content: "";
+        position: absolute;
+        background: linear-gradient(
+          -44deg,
+          var(--oat) 40%,
+          var(--dark-oat) 50%,
+          var(--oat) 60%
+        );
+        height: 0.46em;
+        width: 0.5em;
+        transform: rotate(110deg);
+        border-radius: 67% 0;
+      }
+
+      .onion-seed {
+        position: absolute;
+        top: 23px;
+        left: 22px;
+      }
+      .onion {
+        background: linear-gradient(
+          -44deg,
+          var(--charcoal) 53%,
+          var(--choc-one) 100%
+        );
+        height: 0.24em;
+        width: 0.22em;
+        transform: rotate(89deg);
+        border-radius: 56% 25% 91% 0%;
+        border: 1px solid var(--charcoal);
+      }
+      .onion::before {
+        top: -30px;
+        right: 11px;
+        content: "";
+        position: absolute;
+        background: linear-gradient(
+          95deg,
+          var(--charcoal) 49%,
+          var(--choc-one) 100%
+        );
+        height: 0.25em;
+        width: 0.2em;
+        transform: rotate(119deg);
+        border-radius: 66% 7% 66% 11%;
+        border: 1px solid var(--charcoal);
+      }
+      .onion::after {
+        top: -7px;
+        right: 24px;
+        content: "";
+        position: absolute;
+        background: linear-gradient(
+          95deg,
+          var(--charcoal) 49%,
+          var(--choc-one) 100%
+        );
+        height: 0.25em;
+        width: 0.23em;
+        transform: rotate(50deg);
+        border-radius: 46% 3% 39% 39%;
+        border: 0px solid var(--charcoal);
+      }
     </style>
   </head>
 
   <body>
-    <!-- <div class="carrot-seedling">
-      <div class="c-leaf1"></div>
-      <div class="c-leaf2"></div>
-      <div class="c-leaf3"></div>
-    </div> -->
     <div id="page"></div>
     <script src="main.js"></script>
   </body>

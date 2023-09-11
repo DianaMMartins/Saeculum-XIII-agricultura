@@ -4,7 +4,9 @@ export const plantType = {
     isBlocked: false,
     growTime: 3500,
     howThirsty: 2,
-    seed: "🫘",
+    seed: `<div class="wheat-seed">
+    <div class="wheat seed"></div>
+  </div>`,
     seedling: `<div class="wheat-seedling">
     <div class="w-leaf1"></div>
     <div class="w-leaf2"></div>
@@ -21,7 +23,9 @@ export const plantType = {
     isBlocked: true,
     growTime: 5000,
     howThirsty: 5,
-    seed: "🫘",
+    seed: `<div class="corn-seed">
+    <div class="corn seed"></div>
+  </div>`,
     seedling: `<div class="corn-seedling">
     <div class="corn-leaf1"></div>
     <div class="corn-leaf2"></div>
@@ -36,7 +40,9 @@ export const plantType = {
     isBlocked: true,
     growTime: 2000,
     howThirsty: 3,
-    seed: "𓇢",
+    seed: `<div class="carrot-seed">
+    <div class="carrot seed"></div>
+  </div>`,
     seedling: `<div class="carrot-seedling">
     <div class="c-leaf1"></div>
     <div class="c-leaf2"></div>
@@ -52,7 +58,9 @@ export const plantType = {
     isBlocked: true,
     growTime: 2500,
     howThirsty: 3,
-    seed: "𓇢",
+    seed: `<div class="onion-seed">
+    <div class="onion seed"></div>
+  </div>`,
     seedling: `<div class="onion-seedling">
     <div class="o-leaf"></div>
 </div>`,

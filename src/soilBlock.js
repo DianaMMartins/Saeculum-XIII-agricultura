@@ -117,6 +117,7 @@ export class SoilBlock {
   updateSoil(parent, nextSoilAction, newDivClass, nextAction) {
     action(parent.soil, nextSoilAction);
     createEl("div", ["req", newDivClass], nextAction, nextAction, parent.soil);
+    console.log(nextSoilAction, 'updateSoil');
     this.updateSoilAct(nextSoilAction);
   }
 
@@ -137,6 +138,7 @@ export class SoilBlock {
       parent.counter++;
     } else {
       action(parent.soil, nextSoilStage);
+      console.log(nextAction);
       createEl("div", ["req", "water-me"], nextAction, nextAction, parent.soil);
       parent.counter = 0;
     }
