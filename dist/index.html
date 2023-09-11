@@ -13,6 +13,7 @@
         --cream-over: #f4ebd0;
         --dry-leaf: #999571;
         --dry-green: #615f48;
+        --dry-leaf-green: #969971;
         --green: #7c832d;
         --soil: #b68d40;
         --wet-soil: #7055239a;
@@ -327,9 +328,197 @@
           font-size: 6vw;
         }
       }
+
+      .corn-seedling {
+        position: absolute;
+        top: 12px;
+        left: 22px;
+      }
+      .corn-leaf1,
+      .corn-leaf2 {
+        width: 32px;
+        height: 45px;
+        position: absolute;
+        border-radius: 0 128px;
+        background: linear-gradient(
+          -123deg,
+          var(--green) 50%,
+          var(--dry-leaf-green) 50%
+        );
+        transform: rotate(18deg);
+        z-index: 2;
+      }
+      .corn-leaf2 {
+        transform: rotate(52deg);
+        left: 16px;
+        z-index: 1;
+      }
+
+      .carrot-seedling {
+        position: absolute;
+        top: 33px;
+        left: -6px;
+      }
+      .c-leaf1,
+      .c-leaf2,
+      .c-leaf3 {
+        width: 30px;
+        height: 35px;
+        border-radius: 36px 35px;
+        background: var(--green);
+        position: absolute;
+        z-index: 3;
+        left: 17px;
+      }
+      .c-leaf1::after {
+        content: "";
+        left: 0px;
+        width: 30px;
+        height: 31px;
+        border-radius: 0 17px;
+        background: var(--soil);
+        top: 6px;
+        display: inline-block;
+        z-index: 1;
+        position: absolute;
+      }
+      .c-leaf2 {
+        left: 49px;
+        transform: rotateY(190deg);
+      }
+      .c-leaf2::after {
+        content: "";
+        background: var(--soil);
+        top: 4px;
+        display: inline-block;
+        z-index: 1;
+        position: absolute;
+        left: -2px;
+        width: 31px;
+        height: 33px;
+        border-radius: 0 21px;
+      }
+      .c-leaf3 {
+        width: 20px;
+        height: 28px;
+        top: -7px;
+        left: 35.6px;
+        border-radius: 0 25px;
+        position: absolute;
+        background: var(--dry-leaf-green);
+        transform: rotate(20deg);
+        z-index: 1;
+      }
+      .c-leaf3::before {
+        content: "";
+        position: absolute;
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        border-radius: 0 100px;
+        left: 0px;
+        background: var(--green);
+        top: 0px;
+        z-index: 1;
+        transform: rotate(25deg);
+      }
+      .c-leaf3::after {
+        content: "";
+        position: absolute;
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        top: 0px;
+        left: 4px;
+        border-radius: 0 25px;
+        transform: rotate(39deg);
+        background: var(--dry-leaf-green);
+      }
+
+      .wheat-seedling {
+        position: absolute;
+        top: 10px;
+        left: 18px;
+      }
+      .w-leaf1,
+      .w-leaf2,
+      .w-leaf3,
+      .w-leaf4 {
+        position: absolute;
+        height: 50px;
+        width: 20px;
+        border-right: 5px solid var(--green);
+        border-top-right-radius: 100% 100%;
+        transform-origin: 0% 100%;
+        margin-left: 3px;
+      }
+      .w-leaf1 {
+        z-index: 3;
+      }
+      .w-leaf2 {
+        margin-left: 7px;
+        border-top-right-radius: 60% 100%;
+        border-color: var(--dry-leaf-green);
+      }
+      .w-leaf3 {
+        border-right: 5px solid var(--green);
+        border-top-right-radius: 56% 100%;
+        margin-left: 56px;
+        scale: -1 1;
+      }
+      .w-leaf4 {
+        margin-left: 60px;
+        border-top-right-radius: 101% 100%;
+        border-color: var(--dry-leaf-green);
+        scale: -1 1;
+        z-index: 3;
+      }
+
+      .o-leaf {
+        width: 0px;
+        transform-origin: 0% 100%;
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        border-bottom: 50px solid var(--dry-leaf-green);
+        border-radius: 69px;
+        position: absolute;
+        left: 38px;
+        top: 6px;
+      }
+      .o-leaf::before {
+        content: "";
+        position: absolute;
+        display: inline-block;
+        width: 8px;
+        height: 45px;
+        border-right: 4px solid var(--green);
+        border-top-right-radius: 100% 100%;
+        transform-origin: 0% 100%;
+        top: 5px;
+        left: -12px;
+      }
+      .o-leaf::after {
+        content: "";
+        position: absolute;
+        display: inline-block;
+        width: 8px;
+        height: 45px;
+        border-right: 4px solid var(--green);
+        border-top-right-radius: 100% 100%;
+        transform-origin: 0% 100%;
+        left: 12px;
+        top: 5px;
+        scale: -1 1;
+      }
     </style>
   </head>
+
   <body>
+    <!-- <div class="carrot-seedling">
+      <div class="c-leaf1"></div>
+      <div class="c-leaf2"></div>
+      <div class="c-leaf3"></div>
+    </div> -->
     <div id="page"></div>
     <script src="main.js"></script>
   </body>
