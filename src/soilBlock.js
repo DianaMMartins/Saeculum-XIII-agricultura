@@ -142,6 +142,7 @@ export class SoilBlock {
     }
     if (parent.seedPlanted.ready === parent.soilAct) {
       parent.soil.classList.add('collect');
+      player.score['plants grown']++;
     }
     parent.isGrowing = false;
   }

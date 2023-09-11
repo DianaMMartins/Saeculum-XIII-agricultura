@@ -19,7 +19,7 @@ export const gameOver = {
   h1: "TU MORTUS ES",
   h2: "Occisi estis. Vos postulo ut tributa!",
   p: "translation: You are killed. You need to pay taxes!",
-  h3: 'Your score: ' + player.cash,
+  h3: 'Your score: ',
 };
 
 export const youWon = {
@@ -27,5 +27,5 @@ export const youWon = {
   h1: "Vincis!",
   h2: "Lucratus es opes!",
   p: "translation: You have gained wealth!",
-  h3: 'Your score: ' + player.cash,
+  h3: 'Your score: ',
 };

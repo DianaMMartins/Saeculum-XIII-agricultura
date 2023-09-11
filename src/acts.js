@@ -5,7 +5,6 @@ import { mainDiv } from "./main";
 
 export function createEl(type, newClass, newId, newText, parent) {
   const el = document.createElement(type);
-
   if (Array.isArray(newClass)) {
     el.classList.add(...newClass);
   } else if (newClass !== "") {
@@ -65,8 +64,8 @@ export function updateCursor(emoji) {
 
 export function sellProduce(sellPrice) {
   player.cash += sellPrice;
+  player.score['cash made'] += sellPrice;
   const newText = parseInt(player.cash);
-  console.log(newText, player.cash);
   updatePlayerInfoBar("cash-value", newText);
 }
 
@@ -104,13 +103,14 @@ export function taxesTimerCountdown() {
     } else {
       if (player.cash === 0) {
         createOverlay(gameOver, mainDiv);
-        //create a clear board function
+        createPlayerScoreboard();
         startNewGame('game-over');
       } else {
         seconds = 60;
         timer.style.color = "black";
         taxesTimerCountdown();
         payTaxes();
+        player.score['time spent']++;
       }
     }
   }
@@ -142,12 +142,22 @@ export function createOverlay(overlayType, parent) {
 
 export function buyYourLand(parent) {
   parent.addEventListener("click", () => {
-    console.log("hi", parent);
     if (player.cash >= 100) {
+      player.score['land'] = 1;
       createOverlay(youWon, mainDiv);
+      createPlayerScoreboard();
       startNewGame('game-won');
     } else {
-      alert(" You don't  have enough coins peasant");
+      alert(" You don't have enough coins peasant");
     }
   });
+}
+
+export function createPlayerScoreboard() {
+  const parent = document.getElementsByTagName('h3')[0];
+  const playerScore = player.finalScore();
+  Object.entries(playerScore).forEach(score => {
+    const textToDisplay = score[0] + ': ' + score[1].toString();
+    createEl('p', 'score-data', score[0], textToDisplay, parent)
+  })
 }
