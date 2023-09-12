@@ -17,7 +17,7 @@
         --dry-leaf-green: #969971;
         --green: #7c832d;
         --soil: #b68d40;
-        --wet-soil: #7055239a;
+        --wet-soil: #705523;
         --oat: #d8c29d;
         --dark-oat: #c8b087;
         --blue: #98afc7;
@@ -1228,23 +1228,53 @@
         border-top-color: transparent;
         border-right-color: transparent;
         border-width: 16px;
-  border-radius: 11px;
+        border-radius: 11px;
         transform: rotate(-205deg);
         border-style: dashed;
       }
       .ploughed-soil::after {
         content: "";
-  position: absolute;
-  left: -41px;
-  top: 12px;
-  border-style: solid;
-  border-color: var(--wet-soil);
-  border-top-color: transparent;
-  border-right-color: transparent;
-  border-width: 16px;
-  border-radius: 11px;
-  transform: rotate(-248deg);
-  border-style: dashed;
+        position: absolute;
+        left: -41px;
+        top: 12px;
+        border-style: solid;
+        border-color: var(--wet-soil);
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-width: 16px;
+        border-radius: 11px;
+        transform: rotate(-248deg);
+        border-style: dashed;
+      }
+      .pooped-soil {
+        position: relative;
+        left: -32px;
+        top: 0;
+        width: 33px;
+        height: 27px;
+        background-color: var(--wet-soil);
+        border-radius: 50px 50px 13px 10px;
+        animation: cloudy 20s linear infinite;
+      }
+      .pooped-soil::before {
+        content: "";
+        position: absolute;
+        background-color: var(--wet-soil);
+        height: 16px;
+        width: 18px;
+        border-radius: 30px 30px 0 0;
+        left: 25px;
+        bottom: 0;
+      }
+      .pooped-soil::after {
+        content: "";
+        position: absolute;
+        background-color: var(--wet-soil);
+        height: 9px;
+        width: 12px;
+        border-radius: 30px 30px 9px 17px;
+        left: -6px;
+        bottom: 0;
       }
 
       @media only screen and (max-width: 666px) {
@@ -1284,9 +1314,6 @@
   </head>
 
   <body>
-   
-
-        
     <div id="page"></div>
     <script src="main.js"></script>
   </body>
