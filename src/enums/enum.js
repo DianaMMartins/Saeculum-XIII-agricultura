@@ -1,19 +1,39 @@
 //for player and mouse
 export const actionTypes = {
-  plow: "⛏",
-  poop: "💩",
+  plough: `<div class="plough">
+  <div class="plough-bod"></div>
+  <div class="plough-head"></div>
+</div>`,
+  poop: `<div class="poop">
+  <div class="fert"></div>
+</div>`,
   seed: "🫘",
-  h2o: "💧",
-  pick: "🧺",
+  h2o: `<div class="water">
+  <div class="drop"></div>
+</div>`,
+  pick: `<div class="basket">
+  <div class="handle"></div>
+  <div class="bottom"></div>
+</div>`,
 };
 
 // for speech bubbles
 export const soilRequests = {
-  plow: "⛏",
-  poop: "💩",
+  plough: `<div class="plough">
+  <div class="plough-bod"></div>
+  <div class="plough-head"></div>
+</div>`,
+  poop: `<div class="poop">
+  <div class="fert"></div>
+</div>`,
   seed: "🫘",
-  h2o: "💧", //🚿
-  pick: "🧺",
+  h2o: `<div class="water">
+  <div class="drop"></div>
+</div>`,
+  pick: `<div class="basket">
+  <div class="handle"></div>
+  <div class="bottom"></div>
+</div>`,
 };
 
 // soil text
@@ -21,7 +41,7 @@ export const soilStages = {
   empty: `<div class="dirt">
   <div class="ground"></div>
 </div>`,
-  plowed: "﹏",
+  ploughed: "﹏",
   pooped: "☁",
   seeded: "🫘",
   seedling: "🌱",

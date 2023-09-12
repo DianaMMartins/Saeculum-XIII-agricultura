@@ -26,23 +26,28 @@ export class SoilBlock {
       if (!event.detail || event.detail == 1) {
         if (
           this.soilAct === soilStages.empty &&
-          this.soil.childElementCount < 1
+          this.soil.childElementCount < 2
         ) {
           createEl(
             "div",
-            ["req", "plow-me"],
-            actionTypes.plow,
-            actionTypes.plow,
+            ["req", "plough-me"],
+            actionTypes.plough,
+            actionTypes.plough,
             this.soil
           );
         }
         if (
           this.soilAct === soilStages.empty &&
-          player.playerAct === soilRequests.plow
+          player.playerAct === soilRequests.plough
         ) {
-          this.updateSoil(this, soilStages.plowed, "poop-me", actionTypes.poop);
+          this.updateSoil(
+            this,
+            soilStages.ploughed,
+            "poop-me",
+            actionTypes.poop
+          );
         } else if (
-          this.soilAct === soilStages.plowed &&
+          this.soilAct === soilStages.ploughed &&
           player.playerAct === soilRequests.poop
         ) {
           this.updateSoil(this, soilStages.pooped, "seed-me", actionTypes.seed);
@@ -64,7 +69,7 @@ export class SoilBlock {
           if (!this.isGrowing) {
             this.soil.removeChild(this.soil.lastChild);
             this.isGrowing = true;
-            this.soil.classList.add('watered');
+            this.soil.classList.add("watered");
             setTimeout(
               this.growPlant,
               this.seedPlanted.growTime,
@@ -82,7 +87,7 @@ export class SoilBlock {
           player.playerAct === soilRequests.h2o
         ) {
           if (!this.isGrowing) {
-            this.soil.classList.add('watered');
+            this.soil.classList.add("watered");
             this.soil.removeChild(this.soil.lastChild);
             this.isGrowing = true;
             setTimeout(
@@ -101,10 +106,16 @@ export class SoilBlock {
           this.soilAct === this.seedPlanted.ready &&
           player.playerAct === soilRequests.pick
         ) {
-          this.updateSoil(this, soilStages.empty, "plow-me", actionTypes.plow);
+          console.log('hi');
+          this.updateSoil(
+            this,
+            soilStages.empty,
+            "plough-me",
+            actionTypes.plough
+          );
           sellProduce(this.seedPlanted.sellPrice);
-          pickDroppedSeeds(this.seedPlanted)
-          this.soil.classList.remove('collect');
+          pickDroppedSeeds(this.seedPlanted);
+          this.soil.classList.remove("collect");
         }
       }
     });
@@ -116,8 +127,8 @@ export class SoilBlock {
 
   updateSoil(parent, nextSoilAction, newDivClass, nextAction) {
     action(parent.soil, nextSoilAction);
-    createEl("div", ["req", newDivClass], nextAction, nextAction, parent.soil);
-    console.log(nextSoilAction, 'updateSoil');
+    createEl("div", ["req", newDivClass], '', nextAction, parent.soil);
+    console.log(nextAction, "updateSoil");
     this.updateSoilAct(nextSoilAction);
   }
 
@@ -126,7 +137,7 @@ export class SoilBlock {
   }
 
   growPlant(parent, nRounds, nextSoilStage, nextAction) {
-    parent.soil.classList.remove('watered');
+    parent.soil.classList.remove("watered");
     if (parent.counter < nRounds) {
       createEl(
         "div",
@@ -143,8 +154,9 @@ export class SoilBlock {
       parent.counter = 0;
     }
     if (parent.seedPlanted.ready === parent.soilAct) {
-      parent.soil.classList.add('collect');
-      player.score['plants grown']++;
+      console.log(parent.soilAct);
+      parent.soil.classList.add("collect");
+      player.score["plants grown"]++;
     }
     parent.isGrowing = false;
   }

@@ -10,9 +10,9 @@ export class ActionButton {
     this.btn = createEl("button", "act", classStr, innerTxt, parent);
     this.btn.addEventListener("click", () => {
       switch (this.classList) {
-        case "plow-btn":
-          player.playerAct = actionTypes.plow;
-          updateCursor(actionTypes.plow);
+        case "plough-btn":
+          player.playerAct = actionTypes.plough;
+          updateCursor(actionTypes.plough);
           break;
         case "poop-btn":
           player.playerAct = actionTypes.poop;
@@ -27,6 +27,7 @@ export class ActionButton {
           updateCursor(actionTypes.h2o);
           break;
         case "pick-btn":
+          console.log(player.playerAct, actionTypes.pick);
           player.playerAct = actionTypes.pick;
           updateCursor(actionTypes.pick);
           break;
