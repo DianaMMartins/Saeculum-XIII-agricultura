@@ -413,7 +413,7 @@
         border-radius: 36px 35px;
         background: var(--green);
         position: absolute;
-        z-index: 3;
+        z-index: 2;
         left: 17px;
       }
       .c-leaf1::after {
@@ -967,8 +967,8 @@
 
       .corn-ready {
         position: relative;
-        top: 30px;
-        left: 30px;
+        top: 2px;
+        left: 20px;
       }
       .corn-head {
         width: 20px;
@@ -1105,6 +1105,44 @@
         top: 28px;
         left: -13px;
       }
+      .carrot-ready {
+        position: relative;
+        top: -16px;
+        left: -17px;
+      }
+      .carrot-head {
+        background: #cd5115;
+        width: 30px;
+        height: 13px;
+        border-radius: 50% 50% 5% 5% / 60% 60% 7% 18%;
+        display: block;
+        top: 27px;
+        position: relative;
+        left: 34px;
+        z-index: 3;
+      }
+      .carrot-ready > .c-leaf3 {
+        width: 4px;
+        height: 36px;
+        top: -4px;
+        left: 39.6px;
+        background: var(--green);
+        transform: rotate(155deg);
+      }
+      .carrot-ready > .c-leaf3::after {
+        width: 4px;
+        top: -2px;
+        left: -10px;
+        transform: rotate(50deg);
+        background: var(--green);
+      }
+      .carrot-ready > .c-leaf3::before {
+        width: 4px;
+        height: 25px;
+        left: -5px;
+        top: 1px;
+        transform: rotate(20deg);
+      }
 
       @media only screen and (max-width: 666px) {
         .basket {
@@ -1143,7 +1181,11 @@
   </head>
 
   <body>
-    
+    <!-- <div class="carrot-ready">
+      <div class="carrot-head"></div>
+      <div class="c-leaf3"></div>
+    </div> -->
+
     <div id="page"></div>
     <script src="main.js"></script>
   </body>

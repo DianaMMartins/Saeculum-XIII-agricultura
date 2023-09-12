@@ -62,7 +62,10 @@ export const plantType = {
     <div class="c-leaf2"></div>
     <div class="c-leaf3"></div>
 </div>`,
-    ready: "🥕",
+    ready: `<div class="carrot-ready">
+    <div class="carrot-head"></div>
+    <div class="c-leaf3"></div>
+  </div>`,
     droppedSeeds: 2,
     buyPrice: 3,
     sellPrice: 6,
