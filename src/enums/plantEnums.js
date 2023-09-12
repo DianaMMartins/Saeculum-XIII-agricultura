@@ -13,7 +13,16 @@ export const plantType = {
     <div class="w-leaf3"></div>
     <div class="w-leaf4"></div>
   </div>`,
-    ready: ``,
+    ready: `<div class="wheat-ready">
+    <div class="wheat-head">
+      <div class="wheat-leaf"></div>
+      <div class="wheat-nub1"></div>
+      <div class="wheat-nub1"></div>
+      <div class="wheat-nub1"></div>
+      <div class="wheat-nub1"></div>
+      <div class="wheat-nub1"></div>
+    </div>
+  </div>`,
     droppedSeeds: 2, //maybe sell seeds in bulk in the future, or they rot
     buyPrice: 1,
     sellPrice: 2,

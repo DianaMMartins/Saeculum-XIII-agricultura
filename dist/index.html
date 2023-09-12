@@ -1018,7 +1018,6 @@
       .corn-leaf::after {
         content: "";
         position: absolute;
-        position: absolute;
         height: 31px;
         width: 11px;
         border-right: 3px solid #6eb33c;
@@ -1044,6 +1043,67 @@
         margin-left: 3px;
         background: #6eb33c;
         left: 10px;
+      }
+
+      .wheat-ready {
+        position: relative;
+        top: -13px;
+        left: 24px;
+      }
+      .wheat-head {
+        transform: rotate(-10deg);
+      }
+      .wheat-nub1 {
+        background: linear-gradient(
+          -44deg,
+          var(--oat) 42%,
+          var(--dark-oat) 50%,
+          var(--oat) 58%
+        );
+        height: 6px;
+        width: 6px;
+        transform: rotate(89deg);
+        border-radius: 80% 0;
+      }
+      .wheat-nub1::before {
+        content: "";
+        position: absolute;
+        display: block;
+        background: linear-gradient(
+          -44deg,
+          var(--oat) 42%,
+          var(--dark-oat) 50%,
+          var(--oat) 58%
+        );
+        height: 6px;
+        width: 6px;
+        transform: rotate(89deg);
+        border-radius: 80% 0;
+        top: -7px;
+        left: 4px;
+      }
+      .wheat-leaf {
+        width: 0px;
+        transform-origin: 0% 100%;
+        border-left: 1px solid transparent;
+        border-right: 1px solid transparent;
+        border-bottom: 49px solid var(--dark-oat);
+        border-radius: 57px;
+        position: absolute;
+        left: 5.5px;
+        top: 3px;
+      }
+      .wheat-leaf::after {
+        content: "";
+        position: absolute;
+        height: 15px;
+        width: 9px;
+        border-right: 2px solid var(--dark-oat);
+        border-top-right-radius: 100% 100%;
+        transform-origin: 0% 100%;
+        margin-left: 3px;
+        top: 28px;
+        left: -13px;
       }
 
       @media only screen and (max-width: 666px) {
@@ -1083,12 +1143,7 @@
   </head>
 
   <body>
-    <!-- <div class="wheat-ready">
-      <div class="wheat-head"></div>
-      <div class="wheat-leaf"></div>
-      <div class="wheat-nub"></div>
-    </div> -->
-
+    
     <div id="page"></div>
     <script src="main.js"></script>
   </body>
