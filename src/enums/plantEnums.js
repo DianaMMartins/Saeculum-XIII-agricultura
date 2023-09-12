@@ -30,8 +30,8 @@ export const plantType = {
   corn: {
     cropName: "corn",
     isBlocked: true,
-    growTime: 5000,
-    howThirsty: 5,
+    growTime: 4500,
+    howThirsty: 4,
     seed: `<div class="corn-seed">
     <div class="corn seed"></div>
   </div>`,
@@ -52,8 +52,8 @@ export const plantType = {
   carrot: {
     cropName: "carrot",
     isBlocked: true,
-    growTime: 2000,
-    howThirsty: 3,
+    growTime: 6000,
+    howThirsty: 4,
     seed: `<div class="carrot-seed">
     <div class="carrot seed"></div>
   </div>`,
