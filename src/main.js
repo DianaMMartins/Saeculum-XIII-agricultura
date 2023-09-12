@@ -61,7 +61,7 @@ function createPlayerInfo(playerInfo) {
 }
 
 function createBuyLandButton() {
-  const buyLand = [icons.coin, player.goal];
+  const buyLand = [icons.coin + player.goal];
   const parent = document.getElementsByClassName('player-info')[0];
   const buttonToBuy = createEl(
     "button",
