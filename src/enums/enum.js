@@ -53,11 +53,15 @@ export const soilStages = {
 };
 
 export const icons = {
-  coin: ` <div class="coin">
+  coin: `<div class="coin">
   <div class="coin-front"></div>
 </div>`,
-  crown: ``,
-  time: ``,
+  crown: `<div class="crown">
+  <div class="crown-center"></div>
+</div>`,
+  time: `<div class="crown">
+  <div class="crown-center"></div>
+</div>`,
 };
 
 // to vary soilStages.ready and seed variety

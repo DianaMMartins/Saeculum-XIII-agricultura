@@ -53,15 +53,15 @@ function createPlayerInfo(playerInfo) {
   const playerInfoBar = createEl("div", "player-info", "", "", mainDiv);
   playerInfo.cash;
   const infoToDisplay = {
-    cash: icons.coin + playerInfo.cash,
-    tithe: icons.crown + 23 + "%", // needs to be a tax function
-    timer: icons.time + 60, //needs to be a timer function taxesTimerCountdown
+    cash: [icons.coin, playerInfo.cash],
+    tithe: [icons.crown, 23 + "%"], // needs to be a tax function
+    timer: [icons.time, 60] //needs to be a timer function taxesTimerCountdown
   };
   createNestedDivEl(playerInfoBar, infoToDisplay, "p-divs");
 }
 
 function createBuyLandButton() {
-  const buyLand = icons.coin + player.goal;
+  const buyLand = [icons.coin, player.goal];
   const parent = document.getElementsByClassName('player-info')[0];
   const buttonToBuy = createEl(
     "button",

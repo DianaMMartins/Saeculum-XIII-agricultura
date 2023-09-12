@@ -5,6 +5,7 @@ import { mainDiv } from "./main";
 
 export function createEl(type, newClass, newId, newText, parent) {
   const el = document.createElement(type);
+  const text = newText.toString();
   if (Array.isArray(newClass)) {
     el.classList.add(...newClass);
   } else if (newClass !== "") {
@@ -13,10 +14,10 @@ export function createEl(type, newClass, newId, newText, parent) {
   if (newId !== "") {
     el.setAttribute("id", newId);
   }
-  if (newText.includes("<")) {
-    el.innerHTML = newText;
+  if (text.includes("<")) {
+    el.innerHTML = text;
   } else {
-    el.innerText = newText;
+    el.innerText = text;
   }
   parent.appendChild(el);
   return el;
@@ -25,19 +26,20 @@ export function createEl(type, newClass, newId, newText, parent) {
 export function createNestedDivEl(parent, infoToDisplayInP, newClass) {
   const newDiv = Object.entries(infoToDisplayInP).forEach((value) => {
     const parentDiv = createEl("div", "p-parent", "", "", parent);
-    const pText = Array.from(value[1]);
+    // const pText = Array.from(value[1]);
+    console.log(value[0], value[1][0], value[1][1]);
     const oneP = createEl(
       "p",
       newClass,
       value[0] + "-symbol",
-      pText[0],
+      value[1][0],
       parentDiv
     );
     createEl(
       "p",
       newClass,
       value[0] + "-value",
-      pText.slice(1).join(""),
+      value[1][1],
       parentDiv
     );
   });

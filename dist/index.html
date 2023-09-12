@@ -1280,7 +1280,8 @@
       }
 
       .coin {
-        position: relative;
+        position: absolute;
+        top: 35px;
       }
       .coin-front {
         position: absolute;
@@ -1321,6 +1322,38 @@
           animation-timing-function: ease-out;
           transform: translateY(-80px);
         }
+      }
+
+      .crown {
+        position: absolute;
+        top: 40px;
+      }
+      .crown-center {
+        width: 0;
+        height: 0;
+        border-left: 16px solid transparent;
+        border-right: 16px solid transparent;
+        border-bottom: 30px solid var(--corn-y);
+      }
+      .crown-center::after {
+        content: "";
+        position: absolute;
+        top: 2px;
+        left: 7px;
+        width: 0;
+        height: 0;
+        border-bottom: 28px solid var(--corn-y);
+        border-left: 27px solid transparent;
+      }
+      .crown-center::before {
+        content: "";
+        position: absolute;
+        top: 4px;
+        left: 0px;
+        width: 0;
+        height: 0;
+        border-bottom: 26px solid var(--corn-y);
+        border-right: 30px solid transparent;
       }
 
       @media only screen and (max-width: 666px) {
