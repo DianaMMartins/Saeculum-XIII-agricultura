@@ -41,7 +41,9 @@ export const soilStages = {
   empty: `<div class="dirt">
   <div class="ground"></div>
 </div>`,
-  ploughed: "﹏",
+  ploughed: `<div class="dirt">
+  <div class="ploughed-soil"></div>
+</div>`,
   pooped: "☁",
   seeded: "🫘",
   seedling: "🌱",
