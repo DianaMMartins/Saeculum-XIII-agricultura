@@ -1356,6 +1356,66 @@
         border-right: 30px solid transparent;
       }
 
+      .time {
+        position: absolute;
+        top: 20px;
+      }
+      .time-keep {
+        background-image: linear-gradient(
+          var(--deep-blue) 0.5em,
+        var(--deep-blue) 0.5em 8.5em,
+          var(--charcoal) 8.5em
+        );
+        -webkit-clip-path: polygon(
+          0% 0%,
+          100% 0%,
+          100% 5.55%,
+          95% 5.55%,
+          95% 28%,
+          60% 46%,
+          60% 54%,
+          95% 72%,
+          95% 94.45%,
+          100% 94.45%,
+          100% 100%,
+          0% 100%,
+          0% 94.45%,
+          5% 94.45%,
+          5% 72%,
+          40% 54%,
+          40% 46%,
+          5% 28%,
+          5% 5.55%,
+          0% 5.55%
+        );
+        clip-path: polygon(
+          0% 0%,
+          100% 0%,
+          100% 5.55%,
+          95% 5.55%,
+          95% 28%,
+          60% 46%,
+          60% 54%,
+          95% 72%,
+          95% 94.45%,
+          100% 94.45%,
+          100% 100%,
+          0% 100%,
+          0% 94.45%,
+          5% 94.45%,
+          5% 72%,
+          40% 54%,
+          40% 46%,
+          5% 28%,
+          5% 5.55%,
+          0% 5.55%
+        );
+        overflow: hidden;
+        position: relative;
+        width: 30px;
+        height: 50px;
+      }
+
       @media only screen and (max-width: 666px) {
         .basket {
           scale: 1.3;

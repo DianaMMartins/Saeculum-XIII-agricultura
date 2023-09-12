@@ -59,8 +59,8 @@ export const icons = {
   crown: `<div class="crown">
   <div class="crown-center"></div>
 </div>`,
-  time: `<div class="crown">
-  <div class="crown-center"></div>
+  time: `<div class="time">
+  <div class="time-keep"></div>
 </div>`,
 };
 
