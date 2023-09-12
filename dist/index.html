@@ -1143,6 +1143,77 @@
         top: 1px;
         transform: rotate(20deg);
       }
+      .onion-ready {
+        position: relative;
+        top: 6px;
+        left: 12px;
+      }
+      .onion-body {
+        width: 35px;
+        height: 30px;
+        border-radius: 40px;
+        background-image: linear-gradient(to right, #cf7e52 50%, #f4e4b3 50%);
+      }
+      .onion-body::before {
+        content: "";
+        position: absolute;
+        width: 25px;
+        height: 30px;
+        left: 5px;
+        background-color: #eec78b;
+        border-radius: 50%;
+      }
+      .onion-head {
+        position: absolute;
+        height: 11px;
+        width: 8px;
+        left: 9px;
+        top: -6px;
+        background-image: linear-gradient(
+          to left top,
+          #cf7e52 50%,
+          transparent 50%
+        );
+        transform: rotate(-58deg);
+      }
+      .onion-head::before {
+        content: "";
+        position: absolute;
+        height: 11px;
+        width: 10px;
+        left: 3px;
+        top: 1px;
+        background-image: linear-gradient(
+          to left top,
+          #eec78b 50%,
+          transparent 50%
+        );
+        transform: rotate(59deg);
+      }
+      .onion-head::after {
+        content: "";
+        position: absolute;
+        height: 13px;
+        width: 10px;
+        left: -4px;
+        top: -2px;
+        background-image: linear-gradient(
+          to left top,
+          #eec78b 50%,
+          transparent 50%
+        );
+        transform: rotate(-8deg);
+      }
+      .onion-nub {
+        height: 6px;
+        width: 5px;
+        left: 16px;
+        top: -3.5px;
+        background: #cf7e52;
+        border-radius: 0px 15px;
+        transform: rotate(124deg);
+        position: relative;
+      }
 
       @media only screen and (max-width: 666px) {
         .basket {
@@ -1181,11 +1252,6 @@
   </head>
 
   <body>
-    <!-- <div class="carrot-ready">
-      <div class="carrot-head"></div>
-      <div class="c-leaf3"></div>
-    </div> -->
-
     <div id="page"></div>
     <script src="main.js"></script>
   </body>

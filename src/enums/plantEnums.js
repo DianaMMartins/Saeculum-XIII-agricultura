@@ -81,7 +81,11 @@ export const plantType = {
     seedling: `<div class="onion-seedling">
     <div class="o-leaf"></div>
 </div>`,
-    ready: "🧅",
+    ready: `<div class="onion-ready">
+    <div class="onion-head"></div>
+    <div class="onion-body"></div>
+    <div class="onion-nub"></div>
+  </div>`,
     droppedSeeds: 5,
     buyPrice: 1,
     sellPrice: 3,
