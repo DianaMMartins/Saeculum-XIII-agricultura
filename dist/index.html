@@ -1303,6 +1303,39 @@
         height: 50px;
       }
 
+      .bean {
+        position: absolute;
+        top: 10px;
+        left: 4px;
+      }
+      .bean-one {
+        background: linear-gradient(
+          -44deg,
+          var(--green) 25%,
+          var(--dry-leaf) 50%,
+          var(--green) 75%
+        );
+        height: 0.6em;
+        width: 0.6em;
+        transform: rotate(88deg);
+        border-radius: 100% 0;
+      }
+      .bean-one::after {
+        content: "";
+        position: absolute;
+        background: linear-gradient(
+          -44deg,
+          var(--green) 25%,
+          var(--dry-leaf) 50%,
+          var(--green) 75%
+        );
+        height: 0.6em;
+        width: 0.6em;
+        transform: rotate(-99deg);
+        border-radius: 100% 0;
+        top: -11px;
+      }
+
       @media only screen and (max-width: 666px) {
         body {
           align-content: start;
@@ -1480,6 +1513,9 @@
         .time-keep {
           width: 16px;
           height: 28px;
+        }
+        .bean-one::after{
+          top: -7px;
         }
       }
     </style>

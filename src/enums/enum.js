@@ -7,7 +7,9 @@ export const actionTypes = {
   poop: `<div class="poop">
   <div class="fert"></div>
 </div>`,
-  seed: "🫘",
+  seed: `<div class="bean">
+  <div class="bean-one"></div>
+</div>`,
   h2o: `<div class="water">
   <div class="drop"></div>
 </div>`,
@@ -26,7 +28,9 @@ export const soilRequests = {
   poop: `<div class="poop">
   <div class="fert"></div>
 </div>`,
-  seed: "🫘",
+  seed: `<div class="bean">
+  <div class="bean-one"></div>
+</div>`,
   h2o: `<div class="water">
   <div class="drop"></div>
 </div>`,
@@ -47,7 +51,9 @@ export const soilStages = {
   pooped: `<div class="dirt">
   <div class="pooped-soil"></div>
 </div>`,
-  seeded: "🫘",
+  seeded: `<div class="bean">
+  <div class="bean-one"></div>
+</div>`,
   seedling: "🌱",
   ready: "🌾",
 };
