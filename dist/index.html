@@ -1279,6 +1279,50 @@
         bottom: 0;
       }
 
+      .coin {
+        position: relative;
+      }
+      .coin-front {
+        position: absolute;
+        width: 1em;
+        height: 1em;
+        border-radius: 50px;
+        background: #999;
+      }
+      .coin-front:before {
+        width: 0.9em;
+        content: "";
+        height: 0.9em;
+        border-radius: 50px;
+        background: #555;
+        position: absolute;
+        top: 2px;
+        left: 2px;
+      }
+      .coin-front::after {
+        content: "";
+        width: 0.4em;
+        height: 0.4em;
+        background: white;
+        position: absolute;
+        top: 13px;
+        left: 13px;
+        border-radius: 1px;
+        transform: rotate(27deg) skew(20deg);
+      }
+
+      @keyframes bounce {
+        20% {
+          animation-timing-function: ease-out;
+          transform: translateY(-60px);
+        }
+
+        50% {
+          animation-timing-function: ease-out;
+          transform: translateY(-80px);
+        }
+      }
+
       @media only screen and (max-width: 666px) {
         .basket {
           scale: 1.3;
