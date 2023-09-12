@@ -13,7 +13,7 @@ export const plantType = {
     <div class="w-leaf3"></div>
     <div class="w-leaf4"></div>
   </div>`,
-    ready: "🌾",
+    ready: ``,
     droppedSeeds: 2, //maybe sell seeds in bulk in the future, or they rot
     buyPrice: 1,
     sellPrice: 2,
@@ -30,7 +30,12 @@ export const plantType = {
     <div class="corn-leaf1"></div>
     <div class="corn-leaf2"></div>
   </div>`,
-    ready: "🌽",
+    ready: `<div class="corn-ready">
+    <div class="corn-head"></div>
+    <div class="corn-leaf"></div>
+    <div class="corn-leaf one"></div>
+    <div class="corn-nub"></div>
+  </div>`,
     droppedSeeds: 4,
     buyPrice: 2,
     sellPrice: 3,

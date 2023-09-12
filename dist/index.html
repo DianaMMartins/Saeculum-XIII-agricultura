@@ -965,6 +965,87 @@
         display: block;
       }
 
+      .corn-ready {
+        position: relative;
+        top: 30px;
+        left: 30px;
+      }
+      .corn-head {
+        width: 20px;
+        height: 30px;
+        background: linear-gradient(
+          -40deg,
+          #fac42b,
+          var(--corn-y) 45%,
+          #fbec5d 50%,
+          var(--corn-y)
+        );
+        background-size: 2px 3px;
+        border-radius: 10% 100%;
+        transform: rotate(11deg);
+        z-index: 2;
+        position: relative;
+      }
+      .corn-leaf {
+        position: absolute;
+        height: 38px;
+        width: 11px;
+        border-right: 5px solid #6eb33c;
+        border-top-right-radius: 100% 100%;
+        transform-origin: 50% 100%;
+        margin-left: 3px;
+        top: -5px;
+        left: 0px;
+        z-index: 2;
+        transform: rotate(2deg);
+      }
+      .corn-leaf::before {
+        content: "";
+        position: absolute;
+        position: absolute;
+        height: 37px;
+        width: 11px;
+        border-right: 4px solid #6eb33c;
+        border-top-right-radius: 81% 93%;
+        transform-origin: 50% 100%;
+        margin-left: 0px;
+        top: 0px;
+        left: 1px;
+        z-index: 2;
+        transform: rotate(6deg);
+        display: block;
+      }
+      .corn-leaf::after {
+        content: "";
+        position: absolute;
+        position: absolute;
+        height: 31px;
+        width: 11px;
+        border-right: 3px solid #6eb33c;
+        border-top-right-radius: 81% 93%;
+        transform-origin: 50% 100%;
+        margin-left: 0px;
+        top: 7px;
+        left: 1px;
+        z-index: 2;
+        transform: rotate(-4deg);
+        display: block;
+      }
+      .corn-leaf.one {
+        transform: rotate(40deg);
+        scale: -1 1;
+        left: 8px;
+        top: -9px;
+      }
+      .corn-nub {
+        position: relative;
+        height: 16px;
+        width: 6px;
+        margin-left: 3px;
+        background: #6eb33c;
+        left: 10px;
+      }
+
       @media only screen and (max-width: 666px) {
         .basket {
           scale: 1.3;
@@ -1002,6 +1083,12 @@
   </head>
 
   <body>
+    <!-- <div class="wheat-ready">
+      <div class="wheat-head"></div>
+      <div class="wheat-leaf"></div>
+      <div class="wheat-nub"></div>
+    </div> -->
+
     <div id="page"></div>
     <script src="main.js"></script>
   </body>
